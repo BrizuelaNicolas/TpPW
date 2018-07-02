@@ -61,8 +61,13 @@ namespace TpPW.Controllers
         //[MyAuthorizeUsuario]
         public ActionResult NuevaTarea()
         {
-            
-            return View();
+            if (Session["usuario"] != null)
+            {
+                TareaCarpeta model = new TareaCarpeta();
+                ViewBag.Carpetas = CarpetasUsuario();
+                return View(model);
+            }
+            return RedirectToAction("Login","Home");         
         }
 
 
@@ -74,6 +79,8 @@ namespace TpPW.Controllers
 
                 if (Session["usuario"] != null)
                 {
+
+                    ViewBag.Carpetas = CarpetasUsuario();
 
                     //falta agregar el combo solo las carpertas de ese usuario
 
@@ -140,27 +147,26 @@ namespace TpPW.Controllers
 
 
 
-        public void CarpetasUsuario()
+        public List<Tuple<int,string>> CarpetasUsuario()
         {
-
             if (Session["usuario"] != null)
             {
                 var usuario = (int)Session["id"];
 
-                List<SelectListItem> car = new List<SelectListItem>();
-
-                List<Carpeta> c = (from p in context.Carpeta
+                var c = (from p in context.Carpeta
                                              where p.IdUsuario == usuario
                                              orderby p.FechaCreacion
-                                               select p).ToList();
-                     
-                ViewData["Carpeta"] = c;
+                                               select p);
 
-               
+                List<Tuple<int, string>> newList = new List<Tuple<int, string>>();
+                foreach (var carpeta in c)
+                {
+                    newList.Add(new Tuple<int, string>(carpeta.IdCarpeta, carpeta.Nombre));
+                }
+                return newList;
             }
-                        
+            return null;
         }
-
 
         // public ActionResult Listado(int idCarpeta)
         //{

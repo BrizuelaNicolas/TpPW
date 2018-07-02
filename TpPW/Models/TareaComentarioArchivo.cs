@@ -9,6 +9,7 @@ namespace TpPW.Models
     {
         public Tarea tarea { get; set; }
         public ComentarioTarea comentario { get; set; }
+        public ComentarioTarea nuevoComentario { get; set; }
         public ArchivoTarea archivo { get; set; }
     }
 }

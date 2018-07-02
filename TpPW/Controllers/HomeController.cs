@@ -24,17 +24,16 @@ namespace TpPW.Controllers
 
 
         public ActionResult Index()
-        {
+      {
             Usuario CurrUser = (Usuario)Session["usuario"];
 
             if (Request.Cookies["CookieUsuario"] != null)
             {
                 if (CurrUser != null)
                 {
-                    Session["email"] = UnprotectCookieInfo(Request.Cookies["CookieUsuario"]["CookieUsuarioEmail"], "CookieInfo");
-                    Session["nombre"] = UnprotectCookieInfo(Request.Cookies["CookieUsuario"]["CookieUsuarioNombre"], "CookieInfo");
-                    Session["apellido"] = UnprotectCookieInfo(Request.Cookies["CookieUsuario"]["CookieUsuarioApellido"], "CookieInfo");
-                    Session["Id"] = UnprotectCookieInfo(Request.Cookies["CookieUsuario"]["CookieUsuarioId"], "CookieInfo");
+                    Session["email"] = UnprotectCookieInfo(Request.Cookies["CookieUsuario"]["CookieEmail"], "CookieInfo");
+                    Session["contra"] = UnprotectCookieInfo(Request.Cookies["CookieUsuario"]["CookieContra"], "CookieInfo");
+                    Session["Id"] = UnprotectCookieInfo(Request.Cookies["CookieUsuario"]["CookieId"], "CookieInfo");
 
                     return RedirectToAction("Index");
                 }
