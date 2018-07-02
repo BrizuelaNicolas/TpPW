@@ -5,9 +5,8 @@ using System.Web;
 
 namespace TpPW.Models
 {
-    public class TareaCarpeta
+    public class MisTareasViewModel
     {
-        public Tarea tarea { get; set; }
-        public int IdCarpeta { get; set; }
+        public List<Tuple<Tarea, string>> Tareas = new List<Tuple<Tarea, string>>();
     }
 }

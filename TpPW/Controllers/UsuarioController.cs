@@ -39,98 +39,110 @@ namespace TpPW.Controllers
         [HttpPost]
         public ActionResult NuevoUsuario(Usuario usuario)
         {
-            var Usu = (from u in context.Usuario select u).ToList();
+            var encodedResponse = Request.Form["g-Recaptcha-Response"];
+            var isCaptchaValid = ProgramacionWeb3TP.Models.Entities.Captcha.Validate(encodedResponse);
 
-            string NombreUsu = usuario.Nombre;
-
-            string ApeUsu = usuario.Apellido;
-
-            string EmailUsu = usuario.Email;
-
-            string Contra = usuario.Contrasenia;
-
-            string ActivoUsu = Convert.ToString(usuario.Activo);
-            usuario.Activo = Convert.ToInt16(ActivoUsu);
-
-
-            usuario.FechaRegistracion = DateTime.Now;
-
-            usuario.FechaActivacion = DateTime.Now;
-
-            usuario.CodigoActivacion = "4AE52B1C-C3E2-4AB1-8EFD-859FCB87F5B4";
-
-
-
-            // hay que verificar que el email no existe
-            // hay que validar si la cuenta esta activa o no
-            Carpeta car = new Carpeta();
-
-            if (usuario.Contrasenia == usuario.ContraseniaConfirmacion)
+            if (!isCaptchaValid)
             {
+                TempData["Error"] = "El captcha es inválido";
+            }
+            else
+            {
+                var Usu = (from u in context.Usuario select u).ToList();
+
+                string NombreUsu = usuario.Nombre;
+
+                string ApeUsu = usuario.Apellido;
+
+                string EmailUsu = usuario.Email;
+
+                string Contra = usuario.Contrasenia;
+
+                string ActivoUsu = Convert.ToString(usuario.Activo);
+                usuario.Activo = Convert.ToInt16(ActivoUsu);
 
 
-                if (VerificoEmail(EmailUsu) == false)
+                usuario.FechaRegistracion = DateTime.Now;
+
+                usuario.FechaActivacion = DateTime.Now;
+
+                usuario.CodigoActivacion = "4AE52B1C-C3E2-4AB1-8EFD-859FCB87F5B4";
+
+
+
+                // hay que verificar que el email no existe
+                // hay que validar si la cuenta esta activa o no
+                Carpeta car = new Carpeta();
+
+                if (usuario.Contrasenia == usuario.ContraseniaConfirmacion)
                 {
-                    usuario.Activo = 1;
-
-                    
-                    context.Usuario.Add(usuario);
-                    context.SaveChanges();
-                    
-
-                    //Tiene que crear una nueva carpeta con nombre gral. referiada a ese usuario
-                    car.Nombre = "General";
-                    car.FechaCreacion = DateTime.Now.Date;
-                    car.Descripcion = "Carpeta creada por default";
-                    car.IdUsuario = usuario.IdUsuario;
-
-                    context.Carpeta.Add(car);
-                    context.SaveChanges();
-                    
-                                      
-
-                    Session["usuario"] = usuario;
-                    Session["contra"] = Contra;
-                    Session["nombre"] = NombreUsu;
-                    Session["email"] = EmailUsu;
-                    Session["id"] = usuario.IdUsuario;
-
-                    //cambiar redireccionamiento
-                    return RedirectToAction("../Home/Home");
 
 
-                }
-                else
-                {
-                    if (VerificoEmail(EmailUsu) == true)
+                    if (VerificoEmail(EmailUsu) == false)
                     {
 
 
-                        //Verifico si el usuario esta activo o no
-                        if (VerificoActividad(ActivoUsu) == true)
+                        usuario.Activo = 1;
+
+
+                        context.Usuario.Add(usuario);
+                        context.SaveChanges();
+
+
+                        //Tiene que crear una nueva carpeta con nombre gral. referiada a ese usuario
+                        car.Nombre = "General";
+                        car.FechaCreacion = DateTime.Now.Date;
+                        car.Descripcion = "Carpeta creada por default";
+                        car.IdUsuario = usuario.IdUsuario;
+
+                        context.Carpeta.Add(car);
+                        context.SaveChanges();
+
+
+
+                        Session["usuario"] = usuario;
+                        Session["contra"] = Contra;
+                        Session["nombre"] = NombreUsu;
+                        Session["email"] = EmailUsu;
+                        Session["id"] = usuario.IdUsuario;
+
+                        //cambiar redireccionamiento
+                        return RedirectToAction("../Home/Home");
+
+
+                    }
+                    else
+                    {
+                        if (VerificoEmail(EmailUsu) == true)
                         {
 
 
-                            //No me sale
-
-                            EmailExisteInactivo(usuario);
-                            //CarpetaSer.CreoCarpetaNuevoUsuario(usuario);
-                                                     
+                            //Verifico si el usuario esta activo o no
+                            if (VerificoActividad(ActivoUsu) == true)
+                            {
 
 
-                            return RedirectToAction("../Home/Home");
+                                //No me sale
+
+                                EmailExisteInactivo(usuario);
+                                //CarpetaSer.CreoCarpetaNuevoUsuario(usuario);
 
 
-                        }
-                        else
-                        {
-                            ViewBag.Messege = "El email ya existe";
-                            return RedirectToAction("NuevoUsuario");
+
+                                return RedirectToAction("../Home/Home");
+
+
+                            }
+                            else
+                            {
+                                ViewBag.Messege = "El email ya existe";
+                                return RedirectToAction("NuevoUsuario");
+
+                            }
 
                         }
 
                     }
-
                 }
             }
 

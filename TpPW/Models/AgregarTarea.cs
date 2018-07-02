@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace TpPW.Servicios
+namespace TpPW.Models
 {
-    public class UsuarioServicio
+    public class AgregarTarea
     {
     }
 }

@@ -15,7 +15,8 @@ using System.Text;
 namespace TpPW.Controllers
 {
     public class HomeController : Controller
-    {
+    { 
+
         // GET: Home
 
         public TareasEntities context = new TareasEntities();
@@ -42,7 +43,7 @@ namespace TpPW.Controllers
             }
             else
             {
-                return View();
+                return RedirectToAction("Login", "Home");
 
             }
    
@@ -166,7 +167,7 @@ namespace TpPW.Controllers
                 
             }
 
-            return View();
+            return RedirectToAction("Login", "Home");
         }
 
 
