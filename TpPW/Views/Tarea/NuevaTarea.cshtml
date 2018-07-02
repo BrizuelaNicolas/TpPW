@@ -12,76 +12,65 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
 
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="col-lg-4 col-lg-offset-4">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                   
-                </div>
-                <div class="panel-body">
-                    <div class="form-horizontal">
+
+            <div class="panel panel-primary col-lg-4 col-lg-offset-4">
+                <div class="panel-body form-horizontal">
+
                         <div class="form-group">
-                            Nombre
-                            <div class="col-sm-8">
-                                @Html.EditorFor(model => model.tarea.Nombre, new { @class = "form-control" })
+                            <label>Nombre</label>
+                                @Html.EditorFor(model => model.tarea.Nombre, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.tarea.Nombre, "", new { @class = "text-danger" })
-                            </div>
                         </div>
 
                         <div class="form-group">
-                            Descipcion
-                            <div class="col-sm-8">
-                                @Html.TextAreaFor(model => model.tarea.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                            <label>Descipcion</label>
+                                @Html.TextAreaFor(model => model.tarea.Descripcion, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(model => model.tarea.Descripcion, "", new { @class = "text-danger" })
-                            </div>
                         </div>
 
                         <div class="form-group">
-                            Tiempo Estimado
-                            <div class="col-sm-4">
+                            <label>Tiempo Estimado</label>
                                 @Html.EditorFor(model => model.tarea.EstimadoHoras, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.tarea.EstimadoHoras, "", new { @class = "text-danger" })
-                            </div>
                         </div>
 
                         <div class="form-group">
-                            Fecha Fin
-                            <div class="col-sm-4">
+                            <label>Fecha Fin</label>
                                 <input type="date" class="form-control" id="FechaFin" />
                                @*@Html.EditorFor(model => model.FechaFin, new { @type = "date" })*@
                                 @*@Html.TextBoxFor(model => model.FechaFin, new { @type = "date", @class = "form-control datepicker", @Value = Model.FechaFin.ToString("yyyy-MM-dd") })*@
                                 @Html.ValidationMessageFor(model => model.tarea.FechaFin, "", new { @class = "text-danger" })
-                            </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="col-lg-6">
                             @*<label for="Prioridad" class="col-sm-4 control-label">Prioridad:</label>*@
-                            @Html.LabelFor(model => model.tarea.Prioridad, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-sm-4">
+                            <label>Prioridad</label>
+
                                 @Html.DropDownListFor(m => m.tarea.Prioridad, new List<SelectListItem>{
-                                                new SelectListItem{ Text="Baja", Value = "1" },
-                                                new SelectListItem{ Text="Media", Value = "2" },
-                                                new SelectListItem{ Text="Alta", Value = "3" },
-                                                new SelectListItem{ Text="Urgente", Value = "4" }
-                                             })
-                            </div>
+                                new SelectListItem{ Text="Baja", Value = "1" },
+                                new SelectListItem{ Text="Media", Value = "2" },
+                                new SelectListItem{ Text="Alta", Value = "3" },
+                                new SelectListItem{ Text="Urgente", Value = "4" }
+                             })
+
                         </div>
-                        
-                           
+                            <div class="col-xs-6">
+
+
                             @if (Model.carpeta != null)
-                            {
-                                <div class="form-group">
-                                    <label for="Carpeta" class="col-sm-4 control-label">Carpeta:</label>
-                                    <div class="col-sm-4">
-                                        @Html.DropDownListFor(model => model.carpeta, new SelectList(ViewBag.Carpetas, "Item1", "Item2"))
-                                    </div>
-                                </div>
-                            }
+    {
+                        <div class="form-group">
+                            <label>Carpeta:</label>
 
+                                @Html.DropDownListFor(model => model.carpeta, new SelectList(ViewBag.Carpetas, "Item1", "Item2"))
 
+                        </div>
+}
+
+                        </div>
                         <div class="form-group">
                             <div class="col-sm-4"></div>
                             <div class="col-sm-6">
@@ -91,11 +80,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-}
 
-                    <div>
+ 
+
+}
+<br />
+                    <div class="col-lg-12">
                         @Html.ActionLink("Volver", "../Carpetas/MisCarpetas")
                     </div>

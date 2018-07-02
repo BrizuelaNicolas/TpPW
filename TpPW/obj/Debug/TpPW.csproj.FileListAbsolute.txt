@@ -151,3 +151,29 @@ C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practic
 C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\System.Web.Webpages.Razor.xml
 C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\System.Web.Helpers.xml
 C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\System.Web.Mvc.xml
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\bin\TpPW.dll.config
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\bin\TpPW.dll
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\bin\TpPW.pdb
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\bin\EntityFramework.dll
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\bin\EntityFramework.SqlServer.dll
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\bin\System.Web.Helpers.dll
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\bin\System.Web.Mvc.dll
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\bin\System.Web.Razor.dll
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\bin\System.Web.Webpages.Deployment.dll
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\bin\System.Web.Webpages.dll
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\bin\System.Web.Webpages.Razor.dll
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\bin\EntityFramework.xml
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\bin\EntityFramework.SqlServer.xml
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\bin\System.Web.Razor.xml
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\bin\System.Web.Webpages.xml
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\bin\System.Web.Webpages.Deployment.xml
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\bin\System.Web.Webpages.Razor.xml
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\bin\System.Web.Helpers.xml
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\bin\System.Web.Mvc.xml
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\obj\Debug\TpPW.csprojResolveAssemblyReference.cache
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\obj\Debug\TpPW.csproj.CoreCompileInputs.cache
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\obj\Debug\TpPW.dll
+C:\Users\nicol\Documents\GitHub\TpPW\TpPW\obj\Debug\TpPW.pdb
