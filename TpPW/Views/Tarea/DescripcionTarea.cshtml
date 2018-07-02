@@ -1,0 +1,49 @@
+﻿@model IEnumerable<TpPW.Models.TareaComentarioArchivo>
+
+@{
+    ViewBag.Title = "DescripcionTarea";
+    Layout = "~/Views/Shared/_User.cshtml";
+}
+<h2>DescripcionTarea</h2>
+
+
+@foreach (var item in Model)
+{
+    @Html.DisplayFor(modelItem => item.tarea.Nombre)
+    <div class="col-lg-6 col-lg-offset-3">
+        <div class="panel panel-info">
+            <div class="panel-heading text-center"><label class="info"> @Html.DisplayFor(modelItem => item.tarea.Nombre)</label></div>
+            <div class="panel-body">
+                <div class="form-group col-lg-4">
+                    <label class="info">Id Tarea:</label>
+                    <label class="info">@Html.DisplayFor(modelItem => item.tarea.IdTarea)</label>
+                </div>
+
+                <div class="form-group col-lg-4">
+                    <label class="info">Id Carpeta:</label>
+                    <label class="info">@Html.DisplayFor(modelItem => item.tarea.IdCarpeta)</label>
+                </div>
+                <div class="form-group col-lg-4">
+                    <label class="info">Fecha creacion:</label>
+                    <label class="info">@Html.DisplayFor(modelItem => item.tarea.FechaCreacion)</label>
+                </div>
+                <div class="form-group col-lg-4">
+                    <label class="info">Prioridad:</label>
+                    <label class="info">@Html.DisplayFor(modelItem => item.tarea.Prioridad)</label>
+                </div>
+                <div class="form-group col-lg-4">
+                    <label class="info" q>Estimado en Horas:</label>
+                    <label class="info">@Html.DisplayFor(modelItem => item.tarea.EstimadoHoras) Hs</label>
+                </div>
+                @Html.DisplayFor(modelItem => item.archivo.RutaArchivo)
+
+                @Html.DisplayFor(modelItem => item.comentario.Texto)
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+}

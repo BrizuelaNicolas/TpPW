@@ -1,0 +1,47 @@
+﻿@model TpPW.Models.Carpeta
+@{
+    ViewBag.Title = "NuevaCarpeta";
+    Layout = "~/Views/Shared/_User.cshtml";
+}
+
+<h2 class="text-center">Nueva Carpeta</h2>
+
+<h2 class="text-center">@ViewBag.MensajeError</h2>
+<h2 class="text-center">@ViewBag.Messege</h2>
+
+@using (Html.BeginForm("NuevaCarpeta", "Carpeta", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="col-lg-4 col-lg-offset-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Nueva carpeta
+            </div>
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="NombreCarpeta" class="col-sm-4 control-label">Nombre:</label>
+                        <div class="col-sm-8">
+                            @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control", title = "Debe ingresar un nombre válido" })
+                            <!-- <input type="text" class="form-control" id="NombreTarea" />-->
+                            <label class="text-danger">@Html.ValidationMessageFor(x => x.Nombre)</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="DescripcionCarpeta" class="col-sm-4 control-label">Descripcion:</label>
+                        <div class="col-sm-8">
+                            @Html.TextAreaFor(m => m.Descripcion, new { @class = "form-control"})
+                            @*<textarea rows="3" class="form-control"></textarea>*@
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-6">
+                            <input type="submit" name="Crear Carpeta" class="btn btn-primary" />
+                            <input type="reset" name="Borrar" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TareasModelStoreContainer" CdmEntityContainer="TareasEntities">
+    <EntitySetMapping Name="ArchivoTarea">
+      <EntityTypeMapping TypeName="TareasModel.ArchivoTarea">
+        <MappingFragment StoreEntitySet="ArchivoTarea">
+          <ScalarProperty Name="IdArchivoTarea" ColumnName="IdArchivoTarea" />
+          <ScalarProperty Name="RutaArchivo" ColumnName="RutaArchivo" />
+          <ScalarProperty Name="IdTarea" ColumnName="IdTarea" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carpeta">
+      <EntityTypeMapping TypeName="TareasModel.Carpeta">
+        <MappingFragment StoreEntitySet="Carpeta">
+          <ScalarProperty Name="IdCarpeta" ColumnName="IdCarpeta" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComentarioTarea">
+      <EntityTypeMapping TypeName="TareasModel.ComentarioTarea">
+        <MappingFragment StoreEntitySet="ComentarioTarea">
+          <ScalarProperty Name="IdComentarioTarea" ColumnName="IdComentarioTarea" />
+          <ScalarProperty Name="Texto" ColumnName="Texto" />
+          <ScalarProperty Name="IdTarea" ColumnName="IdTarea" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tarea">
+      <EntityTypeMapping TypeName="TareasModel.Tarea">
+        <MappingFragment StoreEntitySet="Tarea">
+          <ScalarProperty Name="IdTarea" ColumnName="IdTarea" />
+          <ScalarProperty Name="IdCarpeta" ColumnName="IdCarpeta" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="EstimadoHoras" ColumnName="EstimadoHoras" />
+          <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+          <ScalarProperty Name="Prioridad" ColumnName="Prioridad" />
+          <ScalarProperty Name="Completada" ColumnName="Completada" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="TareasModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Contrasenia" ColumnName="Contrasenia" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="FechaRegistracion" ColumnName="FechaRegistracion" />
+          <ScalarProperty Name="FechaActivacion" ColumnName="FechaActivacion" />
+          <ScalarProperty Name="CodigoActivacion" ColumnName="CodigoActivacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

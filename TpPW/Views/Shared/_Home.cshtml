@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "_Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <nav class="navbar navbar-inverse navbar-fixed-top ">
+        <div class="container-fluid">
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Nuevo Usuario", "NuevoUsuario", "Usuario")</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+<br /><br /><br /><br />
+@RenderBody()
+
+

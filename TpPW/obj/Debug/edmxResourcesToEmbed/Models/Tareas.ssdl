@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TareasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ArchivoTarea">
+    <Key>
+      <PropertyRef Name="IdArchivoTarea" />
+    </Key>
+    <Property Name="IdArchivoTarea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RutaArchivo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdTarea" Type="int" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Carpeta">
+    <Key>
+      <PropertyRef Name="IdCarpeta" />
+    </Key>
+    <Property Name="IdCarpeta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdUsuario" Type="int" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="200" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ComentarioTarea">
+    <Key>
+      <PropertyRef Name="IdComentarioTarea" />
+    </Key>
+    <Property Name="IdComentarioTarea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Texto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdTarea" Type="int" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tarea">
+    <Key>
+      <PropertyRef Name="IdTarea" />
+    </Key>
+    <Property Name="IdTarea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdCarpeta" Type="int" Nullable="false" />
+    <Property Name="IdUsuario" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="200" />
+    <Property Name="EstimadoHoras" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="FechaFin" Type="datetime" />
+    <Property Name="Prioridad" Type="smallint" Nullable="false" />
+    <Property Name="Completada" Type="smallint" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Contrasenia" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Activo" Type="smallint" Nullable="false" />
+    <Property Name="FechaRegistracion" Type="datetime" Nullable="false" />
+    <Property Name="FechaActivacion" Type="datetime" />
+    <Property Name="CodigoActivacion" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ArchivoTarea_Tarea">
+    <End Role="Tarea" Type="Self.Tarea" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ArchivoTarea" Type="Self.ArchivoTarea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tarea">
+        <PropertyRef Name="IdTarea" />
+      </Principal>
+      <Dependent Role="ArchivoTarea">
+        <PropertyRef Name="IdTarea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Carpeta_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Carpeta" Type="Self.Carpeta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Carpeta">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comentario_Tarea">
+    <End Role="Tarea" Type="Self.Tarea" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ComentarioTarea" Type="Self.ComentarioTarea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tarea">
+        <PropertyRef Name="IdTarea" />
+      </Principal>
+      <Dependent Role="ComentarioTarea">
+        <PropertyRef Name="IdTarea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tareas_Usuarios">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Tarea" Type="Self.Tarea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Tarea">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TareasModelStoreContainer">
+    <EntitySet Name="ArchivoTarea" EntityType="Self.ArchivoTarea" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Carpeta" EntityType="Self.Carpeta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ComentarioTarea" EntityType="Self.ComentarioTarea" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tarea" EntityType="Self.Tarea" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ArchivoTarea_Tarea" Association="Self.FK_ArchivoTarea_Tarea">
+      <End Role="Tarea" EntitySet="Tarea" />
+      <End Role="ArchivoTarea" EntitySet="ArchivoTarea" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Carpeta_Usuario" Association="Self.FK_Carpeta_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Carpeta" EntitySet="Carpeta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comentario_Tarea" Association="Self.FK_Comentario_Tarea">
+      <End Role="Tarea" EntitySet="Tarea" />
+      <End Role="ComentarioTarea" EntitySet="ComentarioTarea" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tareas_Usuarios" Association="Self.FK_Tareas_Usuarios">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Tarea" EntitySet="Tarea" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,58 @@
+﻿@model TpPW.Models.Usuario
+@{
+    ViewBag.Title = "NuevoUsuario";
+    Layout = "~/Views/Shared/_Home.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="panel panel-primary col-lg-4 col-lg-offset-4">
+
+        <h3>Nuevo usuario</h3>
+        <hr />
+        <div class="panel-body form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <label>Nombre</label>
+                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label>Apellido</label>
+                @Html.TextBoxFor(model => model.Apellido, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label>Constraseña</label>
+                @Html.PasswordFor(model => model.Contrasenia, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Contrasenia, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label>Reputa Constraseña:</label>
+                @Html.PasswordFor(model => model.ContraseniaConfirmacion, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ContraseniaConfirmacion, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="6Leyol8UAAAAANvqXmrFbYmEoadlPWERYXem1W-v"></div>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <input type="submit" value="Crear Usuario" class="btn btn-primary" />
+        </div>
+    </div>
+
+
+}
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

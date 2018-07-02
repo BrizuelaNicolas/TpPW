@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "_User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<nav class="navbar navbar-inverse navbar-fixed-top ">
+    <div class="container-fluid">
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <ul class="nav navbar-nav">
+                <li><span class="glyphicon glyphicon-search" aria-hidden="true"></span></li>
+                <li>@Html.ActionLink("Mis carpetas", "MisCarpetas", "Carpeta")</li>
+                <li>@Html.ActionLink("Crear carpeta", "NuevaCarpeta", "Carpeta")</li>
+                <li>@Html.ActionLink("Mis tareas", "MisTareas", "Tarea")</li>
+                <li>@Html.ActionLink("Crear tarea", "NuevaTarea", "Tarea")</li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<br /><br /><br /><br />
+
+@RenderBody()
+

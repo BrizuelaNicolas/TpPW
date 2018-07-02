@@ -1,0 +1,66 @@
+﻿@model IEnumerable<TpPW.Models.Carpeta>
+
+@{
+    ViewBag.Title = "MisCarpetas";
+    Layout = "~/Views/Shared/_User.cshtml";
+}
+
+<h2 class="text-center">Mis Carpetas</h2>
+
+<h2 class="text-center">@ViewBag.MensajeError</h2>
+ <h2 class="text-center">@ViewBag.Messege</h2>
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<div class="col-lg-8 col-lg-offset-2">
+    <table class="table table-bordered text-center">
+        <tr class="info">
+            <th class="text-center">
+                Nombre
+            </th>
+            <th class="text-center">
+                Descripcion
+            </th>
+            <th class="text-center">
+                Fecha Creacion
+            </th>
+            <th></th>
+
+        </tr>
+        
+    
+        @foreach (var item in Model)
+
+        {
+           
+
+            //if (item.FechaCreacion < DateTime.Now)
+            //{
+                @:
+                <tr class="bg-danger"></tr>
+
+                @:
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaCreacion)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Tareas", "TareasDeCarpeta", new { id = item.IdCarpeta })|
+                    </td>
+                    <td>
+                        @Html.ActionLink("Crear Tarea", "../Tarea/NuevaTarea", new { id = item.IdCarpeta })
+                    </td>
+                </tr>
+            
+            //}
+        }
+        
+    </table>
+</div>

@@ -1,0 +1,103 @@
+﻿@model TpPW.Models.TareaCarpeta
+
+@{
+    ViewBag.Title = "NuevaTarea";
+    Layout = "~/Views/Shared/_User.cshtml";
+}
+
+<h2 class="text-center">Nueva Tarea</h2>
+<h2 class="text-center">@ViewBag.Messege</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="col-lg-4 col-lg-offset-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                   
+                </div>
+                <div class="panel-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            Nombre
+                            <div class="col-sm-8">
+                                @Html.EditorFor(model => model.Nombre, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            Descipcion
+                            <div class="col-sm-8">
+                                @Html.TextAreaFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            Tiempo Estimado
+                            <div class="col-sm-4">
+                                @Html.EditorFor(model => model.EstimadoHoras, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EstimadoHoras, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            Fecha Fin
+                            <div class="col-sm-4">
+                                <input type="date" class="form-control" id="FechaFin" />
+                               @*@Html.EditorFor(model => model.FechaFin, new { @type = "date" })*@
+                                @*@Html.TextBoxFor(model => model.FechaFin, new { @type = "date", @class = "form-control datepicker", @Value = Model.FechaFin.ToString("yyyy-MM-dd") })*@
+                                @Html.ValidationMessageFor(model => model.FechaFin, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*<label for="Prioridad" class="col-sm-4 control-label">Prioridad:</label>*@
+                            @Html.LabelFor(model => model.Prioridad, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-sm-4">
+                                @Html.DropDownListFor(m => m.Prioridad, new List<SelectListItem>{
+                                                new SelectListItem{ Text="Baja", Value = "1" },
+                                                new SelectListItem{ Text="Media", Value = "2" },
+                                                new SelectListItem{ Text="Alta", Value = "3" },
+                                                new SelectListItem{ Text="Urgente", Value = "4" }
+                                             })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Carpeta" class="col-sm-4 control-label">Carpeta:</label>
+                           
+                            <div class="col-sm-4">
+                                @Html.DropDownListFor(m => m.IdCarpeta, new List<SelectListItem>{
+                                                new SelectListItem{Value = "1" },
+                                                new SelectListItem{ Value = "2" },
+                                                new SelectListItem{Value = "3" },
+                                                new SelectListItem{Value = "4" }
+                                             })
+                                @ViewBag.Carpeta
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-sm-4"></div>
+                            <div class="col-sm-6">
+                                <input type="submit" name="Crear Tarea" class="btn btn-primary" />
+                                <input type="reset" name="Borrar" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+                    <div>
+                        @Html.ActionLink("Volver", "../Carpetas/MisCarpetas")
+                    </div>

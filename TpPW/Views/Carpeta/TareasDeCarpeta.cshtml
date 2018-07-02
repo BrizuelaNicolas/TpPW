@@ -1,0 +1,89 @@
+﻿@model IEnumerable<TpPW.Models.Tarea>
+
+@{
+    ViewBag.Title = "TareasDeCarpeta";
+    Layout = "~/Views/Shared/_User.cshtml";
+}
+
+<h2>TareasDeCarpeta</h2>
+
+<div class="col-lg-10 col-lg-offset-1">
+    <table class="table table-bordered text-center">
+        <tr class="info">
+            <th class="text-center">
+                Fecha Fin
+            </th>
+            <th class="text-center">
+                Nombre
+            </th>
+            <th class="text-center">
+                Prioridad
+            </th>
+            <th class="text-center">
+                Carpeta
+            </th>
+            <th class="text-center">
+                Estimado
+            </th>
+            <th class="text-center">
+                Completada
+            </th>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+
+        {
+
+            if (item.FechaCreacion < DateTime.Now)
+            {
+                @:
+                <tr class="bg-danger"></tr>
+
+
+
+
+                @:
+                <tr>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaFin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prioridad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdCarpeta)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EstimadoHoras) Hs
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Completada)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Descripcion", "DescripcionTarea", "Tarea", new { idTar = item.IdTarea }, null)
+                    </td>
+                    <td>
+                        <input type="checkbox" id="TareaCompleta" name="TareaCom" /> Completa
+                    </td>
+                </tr>
+
+            }
+
+
+
+        }
+
+    </table>
+</div>

@@ -1,0 +1,153 @@
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\bin\TpPW.dll.config
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\bin\TpPW.dll
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\bin\TpPW.pdb
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\bin\Microsoft.Web.Infrastructure.dll
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\bin\System.Web.Helpers.dll
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\bin\System.Web.Mvc.dll
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\bin\System.Web.Razor.dll
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\bin\System.Web.Webpages.Deployment.dll
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\bin\System.Web.Webpages.dll
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\bin\System.Web.Webpages.Razor.dll
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\bin\System.Web.Razor.xml
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\bin\System.Web.Webpages.xml
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\bin\System.Web.Webpages.Deployment.xml
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\bin\System.Web.Webpages.Razor.xml
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\bin\System.Web.Helpers.xml
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\bin\System.Web.Mvc.xml
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\obj\Debug\TpPW.csprojResolveAssemblyReference.cache
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\obj\Debug\TpPW.csproj.CoreCompileInputs.cache
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\obj\Debug\TpPW.dll
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\obj\Debug\TpPW.pdb
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\bin\EntityFramework.dll
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\bin\EntityFramework.SqlServer.dll
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\bin\EntityFramework.xml
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW\TpPW\bin\EntityFramework.SqlServer.xml
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\bin\TpPW.dll.config
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\bin\TpPW.dll
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\bin\TpPW.pdb
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\bin\EntityFramework.dll
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\bin\EntityFramework.SqlServer.dll
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\bin\System.Web.Helpers.dll
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\bin\System.Web.Mvc.dll
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\bin\System.Web.Razor.dll
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\bin\System.Web.Webpages.Deployment.dll
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\bin\System.Web.Webpages.dll
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\bin\System.Web.Webpages.Razor.dll
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\bin\EntityFramework.xml
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\bin\EntityFramework.SqlServer.xml
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\bin\System.Web.Razor.xml
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\bin\System.Web.Webpages.xml
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\bin\System.Web.Webpages.Deployment.xml
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\bin\System.Web.Webpages.Razor.xml
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\bin\System.Web.Helpers.xml
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\bin\System.Web.Mvc.xml
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\obj\Debug\TpPW.csprojResolveAssemblyReference.cache
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\obj\Debug\TpPW.csproj.CoreCompileInputs.cache
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\obj\Debug\TpPW.dll
+C:\Users\nicol\Desktop\TpPW -v1\TpPW\obj\Debug\TpPW.pdb
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\bin\TpPW.dll.config
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\bin\TpPW.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\bin\TpPW.pdb
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\bin\EntityFramework.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\bin\EntityFramework.SqlServer.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\bin\System.Web.Helpers.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\bin\System.Web.Mvc.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\bin\System.Web.Razor.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\bin\System.Web.Webpages.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\bin\System.Web.Webpages.Razor.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\bin\EntityFramework.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\bin\EntityFramework.SqlServer.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\bin\System.Web.Razor.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\bin\System.Web.Webpages.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\bin\System.Web.Webpages.Razor.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\bin\System.Web.Helpers.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\bin\System.Web.Mvc.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\obj\Debug\TpPW.csprojResolveAssemblyReference.cache
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\obj\Debug\TpPW.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v3\TpPW\obj\Debug\TpPW.pdb
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\bin\TpPW.dll.config
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\bin\TpPW.dll
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\bin\TpPW.pdb
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\bin\EntityFramework.dll
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\bin\EntityFramework.SqlServer.dll
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\bin\Microsoft.Web.Infrastructure.dll
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\bin\System.Web.Helpers.dll
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\bin\System.Web.Mvc.dll
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\bin\System.Web.Razor.dll
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\bin\System.Web.Webpages.Deployment.dll
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\bin\System.Web.Webpages.dll
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\bin\System.Web.Webpages.Razor.dll
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\bin\EntityFramework.xml
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\bin\EntityFramework.SqlServer.xml
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\bin\System.Web.Razor.xml
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\bin\System.Web.Webpages.xml
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\bin\System.Web.Webpages.Deployment.xml
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\bin\System.Web.Webpages.Razor.xml
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\bin\System.Web.Helpers.xml
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\bin\System.Web.Mvc.xml
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\obj\Debug\TpPW.csproj.CoreCompileInputs.cache
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\obj\Debug\TpPW.dll
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\obj\Debug\TpPW.pdb
+C:\Bkp\Facultad\PW3\TP\Trabajo\TpPW -v4\TpPW\obj\Debug\TpPW.csprojResolveAssemblyReference.cache
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\bin\TpPW.dll.config
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\bin\TpPW.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\bin\TpPW.pdb
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\bin\EntityFramework.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\bin\EntityFramework.SqlServer.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\bin\System.Web.Helpers.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\bin\System.Web.Mvc.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\bin\System.Web.Razor.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\bin\System.Web.Webpages.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\bin\System.Web.Webpages.Razor.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\bin\EntityFramework.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\bin\EntityFramework.SqlServer.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\bin\System.Web.Razor.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\bin\System.Web.Webpages.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\bin\System.Web.Webpages.Razor.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\bin\System.Web.Helpers.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\bin\System.Web.Mvc.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\obj\Debug\TpPW.csprojResolveAssemblyReference.cache
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\obj\Debug\TpPW.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v6\TpPW\obj\Debug\TpPW.pdb
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\obj\Debug\TpPW.csprojResolveAssemblyReference.cache
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\obj\Debug\TpPW.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\obj\Debug\TpPW.pdb
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\TpPW.dll.config
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\TpPW.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\TpPW.pdb
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\EntityFramework.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\EntityFramework.SqlServer.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\System.Web.Helpers.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\System.Web.Mvc.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\System.Web.Razor.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\System.Web.Webpages.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\System.Web.Webpages.Razor.dll
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\EntityFramework.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\EntityFramework.SqlServer.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\System.Web.Razor.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\System.Web.Webpages.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\System.Web.Webpages.Razor.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\System.Web.Helpers.xml
+C:\Users\Maiten\Documents\Facultad\Programacion Web 3\web 3 2018\trabajo practico grupal\TpPW -v12\TpPW\bin\System.Web.Mvc.xml

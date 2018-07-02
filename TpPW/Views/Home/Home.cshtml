@@ -1,0 +1,137 @@
+﻿@model IEnumerable<object>
+@{
+    List<TpPW.Models.Carpeta> listCarpeta = Model.ToList()[0] as List<TpPW.Models.Carpeta>;
+    List<TpPW.Models.Tarea> listTarea = Model.ToList()[1] as List<TpPW.Models.Tarea>;
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_User.cshtml";
+}
+
+<h3 class="text-center">Carpetas</h3>
+
+<div class="col-lg-8 col-lg-offset-2">
+    <table class="table table-bordered text-center">
+        <tr class="info">
+            <th class="text-center">
+                Nombre
+            </th>
+            <th class="text-center">
+                Descripcion
+            </th>
+            <th class="text-center">
+                Fecha Creacion
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+         
+        @foreach (var item in listCarpeta)
+
+        {
+
+
+            //if (item.FechaCreacion < DateTime.Now)
+            //{
+            @:
+            <tr class="bg-danger"></tr>
+
+            @:
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaCreacion)
+                </td>
+                <td>
+                    @Html.ActionLink("Tareas", "TareasDeCarpeta", new { id = item.IdCarpeta })
+                </td>
+                <td>
+                    @Html.ActionLink("Crear Tarea", "../Tarea/NuevaTarea", new { id = item.IdCarpeta })
+                </td>
+            </tr>
+
+            //}
+        }
+    </table>
+</div>
+
+
+<div class="col-lg-10 col-lg-offset-1">
+    <h3 class="text-center">Tareas</h3>
+    <table class="table table-bordered text-center">
+        <tr class="info">
+            <th class="text-center">
+                Fecha Fin
+            </th>
+            <th class="text-center">
+                Nombre
+            </th>
+            <th class="text-center">
+                Prioridad
+            </th>
+            <th class="text-center">
+                Carpeta
+            </th>
+            <th class="text-center">
+                Estimado
+            </th>
+            <th class="text-center">
+                Completada
+            </th>
+            <th>
+            </th>
+            <th>
+            </th>
+
+        </tr>
+        @foreach (var item in listTarea)
+
+        {
+
+           // if (item.FechaCreacion < DateTime.Now)
+            //{
+                @:
+                <tr class="bg-danger"></tr>
+
+
+
+
+                @:
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaFin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prioridad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdCarpeta)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EstimadoHoras) Hs
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Completada)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Ver detalles", "DescripcionTarea", new { IdTar = item.IdTarea })
+                    </td>
+                    <td>
+                        <input type="checkbox" id="TareaCompleta" name="TareaCom" /> Completa
+                    </td>
+                </tr>
+
+           // }
+
+
+
+        }
+    </table>
+</div>
