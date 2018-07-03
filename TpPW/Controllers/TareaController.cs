@@ -72,9 +72,8 @@ namespace TpPW.Controllers
             {
                 var usuario = (int)Session["id"];
 
-//List<Tarea>
 
-                 var tarea = (from p in context.Tarea
+                List<Tarea> tarea = (from p in context.Tarea
                                      where p.IdUsuario == usuario
                                      orderby p.FechaCreacion
                                      select p
@@ -114,21 +113,15 @@ namespace TpPW.Controllers
 
                 if (ModelState.IsValid)
                 {
-
-                    //falta agregar el combo solo las carpertas de ese usuario
                     tarea.FechaCreacion = DateTime.Now;
+
                     if(tarea.FechaFin == null)
                     {
                         tarea.FechaFin = DateTime.Now;
                     }                                                                               
 
                     var usuario = (int)Session["id"];
-
-                    //var tar = (from p in context.Tarea
-                    //           where p.IdUsuario == usuario
-                    //           orderby p.FechaCreacion
-                    //           select p).ToList();                    
-
+                   
                     tarea.IdUsuario = usuario;
 
                     context.Tarea.Add(tarea);
@@ -148,6 +141,10 @@ namespace TpPW.Controllers
             }
             return RedirectToAction("Login", "Home");
         }
+
+
+
+
 
 
         public List<Tuple<int,string>> CarpetasUsuario()
@@ -173,6 +170,10 @@ namespace TpPW.Controllers
 
     
 
+
+
+
+
         public ActionResult DescripcionTarea(int IdTar)
         {
             DetalleTarea model = new DetalleTarea();
@@ -194,6 +195,10 @@ namespace TpPW.Controllers
 
      
 
+
+
+
+
         [HttpPost]
         public ActionResult CrearComentario(ComentarioTarea nuevocomentario)
         {
@@ -208,14 +213,6 @@ namespace TpPW.Controllers
                     int IdTarea = nuevocomentario.IdTarea;
 
                     nuevocomentario.FechaCreacion = DateTime.Now;
-
-
-                    //var usuario = (int)Session["id"];
-
-                    //var tarea = (from p in context.Tarea
-                    //           where p.IdUsuario == usuario
-                    //           orderby p.FechaCreacion
-                    //           select p).ToList();
 
                     context.ComentarioTarea.Add(nuevocomentario);
                     context.SaveChanges();
@@ -234,6 +231,54 @@ namespace TpPW.Controllers
                 }
 
               }
+
+
+            return RedirectToAction("Login", "Home");
+        }
+
+
+
+
+
+
+        [HttpPost]
+        public ActionResult SubirArchivo(ArchivoTarea nuevoArchivo)
+        {
+            if (Session["usuario"] != null)
+            {
+
+                if (ModelState.IsValid)
+                {
+
+                    if (Request.Files.Count > 1 && Request.Files[0].ContentLength > 0)
+                    {
+                        string nombreSignificativo = nuevoArchivo.NombreArchivo;
+
+                        string subirArchivo = ArchivoModelView.Guardar(Request.Files[0], nombreSignificativo);
+                        nuevoArchivo.RutaArchivo = subirArchivo;
+                    }
+
+                    int IdTarea = nuevoArchivo.IdTarea;
+
+                    nuevoArchivo.FechaCreacion = DateTime.Now;
+
+                    context.ArchivoTarea.Add(nuevoArchivo);
+                    context.SaveChanges();
+
+                    if (nuevoArchivo != null)
+                    {
+                        ViewBag.Mensaje = "Archivo adjuntado con exito";
+                        return RedirectToAction("DescripcionTarea", "Tarea", new { @IdTar = IdTarea });
+                    }
+                }
+
+                else
+                {
+                    ViewBag.Mensaje = "El archivo no pudo ser adjuntado";
+                    return View("DescripcionTarea");
+                }
+
+            }
 
 
             return RedirectToAction("Login", "Home");

@@ -6,6 +6,7 @@
 }
 
 <h2 class="text-center">Mis Carpetas</h2>
+<hr />
 
 <h4 class="text-center">@ViewBag.MensajeError</h4>
 <h4 class="text-center" style="color:red">@ViewBag.Messege</h4>
@@ -24,6 +25,7 @@
             <th class="text-center">
                 Fecha Creacion
             </th>
+            <th></th>
             <th></th>
 
         </tr>
@@ -52,7 +54,7 @@
                         @Html.DisplayFor(modelItem => item.FechaCreacion)
                     </td>
                     <td>
-                        @Html.ActionLink("Tareas", "TareasDeCarpeta", new { id = item.IdCarpeta })|
+                        @Html.ActionLink("Tareas", "TareasDeCarpeta", new { id = item.IdCarpeta })
                     </td>
                     <td>
                         @Html.ActionLink("Crear Tarea", "../Tarea/NuevaTarea", new { id = item.IdCarpeta })

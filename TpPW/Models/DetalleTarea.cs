@@ -11,5 +11,6 @@ namespace TpPW.Models
         public List<ComentarioTarea> ListaComentarioTarea = new List<ComentarioTarea>();
         public List<ArchivoTarea> ListaArchivoTarea = new List<ArchivoTarea>();
         public ComentarioTarea NuevoComentario = new ComentarioTarea();
+        public ArchivoTarea NuevoArchivo = new ArchivoTarea();
     }
 }

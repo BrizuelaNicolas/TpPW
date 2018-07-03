@@ -18,6 +18,8 @@ namespace TpPW.Models
         public string RutaArchivo { get; set; }
         public int IdTarea { get; set; }
         public System.DateTime FechaCreacion { get; set; }
+
+        public string NombreArchivo { get; set; }
     
         public virtual Tarea Tarea { get; set; }
     }

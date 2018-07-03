@@ -133,6 +133,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AgregarTarea.cs" />
+    <Compile Include="Models\ArchivoModelView.cs" />
     <Compile Include="Models\ArchivoTarea.cs">
       <DependentUpon>Tareas.tt</DependentUpon>
     </Compile>
@@ -145,6 +146,7 @@
     </Compile>
     <Compile Include="Models\DetalleTarea.cs" />
     <Compile Include="Models\MisTareasViewModel.cs" />
+    <Compile Include="Models\StringUtility.cs" />
     <Compile Include="Models\Tarea.cs">
       <DependentUpon>Tareas.tt</DependentUpon>
     </Compile>

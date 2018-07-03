@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using TpPW.Servicios;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
+using TpPW.Models.Entities;
 
 
 
@@ -40,7 +41,7 @@ namespace TpPW.Controllers
         public ActionResult NuevoUsuario(Usuario usuario)
         {
             var encodedResponse = Request.Form["g-Recaptcha-Response"];
-            var isCaptchaValid = ProgramacionWeb3TP.Models.Entities.Captcha.Validate(encodedResponse);
+            var isCaptchaValid = Captcha.Validate(encodedResponse);
 
             if (!isCaptchaValid)
             {

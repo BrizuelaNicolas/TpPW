@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ProgramacionWeb3TP.Models.Entities
+namespace TpPW.Models.Entities
 {
     public class Captcha
     {
@@ -12,7 +12,7 @@ namespace ProgramacionWeb3TP.Models.Entities
             if (string.IsNullOrEmpty(encodedResponse)) return false;
 
             var client = new System.Net.WebClient();
-            var secret = "6LeQrGEUAAAAAA2dnkQGdohnP3C5fN27xjAgPSB0";
+            var secret = "6Leyol8UAAAAAAPsqeYil0NqhtGCQubxaG3kXmhK";
 
             if (string.IsNullOrEmpty(secret)) return false;
 

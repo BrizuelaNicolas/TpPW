@@ -4,7 +4,8 @@
     Model.NuevoComentario.IdTarea = Model.Tarea.IdTarea;
     Layout = "~/Views/Shared/_User.cshtml";
 }
-
+<h2 class="text-center">Descripcion Tarea</h2>
+<hr />
 <h4 class="text-center" style="color:red">@ViewBag.Messege</h4>
 <div class="row">
     <div class="col-lg-4 col-lg-offset-4">
@@ -15,7 +16,7 @@
             <div class="panel-body form-horizontal">
 
                 <label>Tarea: </label> @Model.Tarea.Nombre <br />
-                <label>Descripcion</label> <br /> @Model.Tarea.Descripcion
+                <label>Descripcion:</label> @Model.Tarea.Descripcion
             </div>
         </div>
     </div>
@@ -35,8 +36,10 @@
 
                 @using (Html.BeginForm("CrearComentario", "Tarea"))
                 {
+                    
                     @Html.TextAreaFor(m => m.NuevoComentario.Texto)
-                    @Html.HiddenFor(m => m.NuevoComentario.IdTarea)
+                    @Html.HiddenFor(m => m.NuevoComentario.IdTarea) 
+                    <br />
                     <input type="submit" value="Comentar" class="btn btn-primary"/>
                 }
 
@@ -52,6 +55,15 @@
                 @foreach (var item in Model.ListaArchivoTarea)
                 {
                     <label>@item.FechaCreacion</label><br />@item.RutaArchivo<br />
+                }
+
+                @using (Html.BeginForm("SubirArchivo", "Tarea"))
+                {
+                @Html.TextBoxFor(m => m.NuevoArchivo.NombreArchivo)
+                @Html.TextBoxFor(m => m.NuevoArchivo.RutaArchivo , new { type = "file" })
+                @Html.HiddenFor(m => m.NuevoArchivo.IdTarea)
+                    <br />
+                <input type="submit" value="Adjuntar" class="btn btn-primary" />
                 }
             </div>
         </div>
