@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using TpPW.Models;
 using System.Web.Security;
-
+using System.Web.Routing;
 
 namespace TpPW.Controllers
 {
@@ -31,6 +31,40 @@ namespace TpPW.Controllers
 
 
 
+        ////Listamos las tareas
+        //public ActionResult MisTareas()
+        //{
+        //    if (Session["usuario"] != null)
+        //    {
+        //        var usuario = (int)Session["id"];
+
+        //        MisTareasViewModel model = new MisTareasViewModel();
+
+        //        var tareas = (from p in context.Tarea
+        //                      join q in context.Carpeta on p.IdUsuario equals q.IdUsuario
+        //                      where p.IdUsuario == usuario
+        //                      orderby p.FechaCreacion
+        //                      select new { p, q.Nombre }
+        //                                   ).ToList();
+
+        //        foreach (var item in tareas)
+        //        {
+        //            model.Tareas.Add(new Tuple<Tarea, string>(item.p, item.Nombre));
+        //        }
+
+        //        return View(model);
+        //    }
+        //    else
+        //    {
+        //        ViewBag.MensajeError = "El Usuario no posee Tareas";
+        //        return RedirectToAction("../Carpeta/MisCarpetas");
+        //    }
+
+        //}
+
+
+
+
         //Listamos las tareas
         public ActionResult MisTareas()
         {
@@ -38,12 +72,13 @@ namespace TpPW.Controllers
             {
                 var usuario = (int)Session["id"];
 
+//List<Tarea>
 
-               List<Tarea> tarea = (from p in context.Tarea
+                 var tarea = (from p in context.Tarea
                                      where p.IdUsuario == usuario
                                      orderby p.FechaCreacion
                                      select p
-                                          ).ToList();
+                                           ).ToList();
 
                 return View(tarea);
             }
@@ -52,7 +87,7 @@ namespace TpPW.Controllers
                 ViewBag.MensajeError = "El Usuario no posee Tareas";
                 return RedirectToAction("../Carpeta/MisCarpetas");
             }
-           
+
         }
 
 
@@ -63,88 +98,56 @@ namespace TpPW.Controllers
         {
             if (Session["usuario"] != null)
             {
-                TareaCarpeta model = new TareaCarpeta();
                 ViewBag.Carpetas = CarpetasUsuario();
-                return View(model);
+                return View();
             }
-            return RedirectToAction("Login","Home");         
+            return RedirectToAction("Login", "Home");
         }
 
 
         [HttpPost]
-        public ActionResult NuevaTarea(TareaCarpeta tareacarpeta)
+        public ActionResult NuevaTarea(Tarea tarea)
         {
-            if (ModelState.IsValid)
+            if (Session["usuario"] != null)
             {
+                ViewBag.Carpetas = CarpetasUsuario();
 
-                if (Session["usuario"] != null)
+                if (ModelState.IsValid)
                 {
 
-                    ViewBag.Carpetas = CarpetasUsuario();
-
                     //falta agregar el combo solo las carpertas de ese usuario
-
-                    string nombreTarea = tareacarpeta.tarea.Nombre;
-
-                    string descripcionTarea = tareacarpeta.tarea.Descripcion;
-
-
-                    string estimadoTarea = Convert.ToString(tareacarpeta.tarea.EstimadoHoras);
-                    tareacarpeta.tarea.EstimadoHoras = Convert.ToDecimal(estimadoTarea);
-
-                    //ver fecha, no la trae de la vista
-                    DateTime FechaF = Convert.ToDateTime(tareacarpeta.tarea.FechaFin);
-                    tareacarpeta.tarea.FechaFin = Convert.ToDateTime(FechaF);
-
-                    //int Priori = tarea.Prioridad;
-                    //falta la prioridad como lista dinamica.
-                    tareacarpeta.tarea.Prioridad = 1;
-                    //falta el id de carpeta
-                    int IdCar = tareacarpeta.tarea.IdCarpeta;
-
-                    //List<SelectListItem> priori = new SelectList((), "ItemID", "Descripcion").ToList();
-                    //priori.Insert(0, (new SelectListItem { Text = " Sin Padre ", Value = 0 }));
-
+                    tarea.FechaCreacion = DateTime.Now;
+                    if(tarea.FechaFin == null)
+                    {
+                        tarea.FechaFin = DateTime.Now;
+                    }                                                                               
 
                     var usuario = (int)Session["id"];
 
-                    var tar = (from p in context.Tarea
-                               where p.IdUsuario == usuario
-                               orderby p.FechaCreacion
-                               select p).ToList();
+                    //var tar = (from p in context.Tarea
+                    //           where p.IdUsuario == usuario
+                    //           orderby p.FechaCreacion
+                    //           select p).ToList();                    
 
-                    int IdUs = usuario;
+                    tarea.IdUsuario = usuario;
 
-
-
-
-                    tareacarpeta.tarea.IdUsuario = IdUs;
-                    
-                    context.Tarea.Add(tareacarpeta.tarea);
+                    context.Tarea.Add(tarea);
                     context.SaveChanges();
-                }
 
-                if (tareacarpeta != null)
-                {
-                    Session["Mensaje"] = "El paquete " + tareacarpeta.tarea.Nombre + " ha creado exitosamente";
-                    return RedirectToAction("ListadoTareas");
+                    if (tarea != null)
+                    {
+                        Session["Mensaje"] = "La tarea " + tarea.Nombre + " se ha creado exitosamente";
+                        return RedirectToAction("MisTareas");
+                    }
                 }
-
                 else
                 {
                     ViewBag.Mensaje = "La Tarea no pudo ser creada";
-                    return View();
+                    return View("NuevaTarea");
                 }
-
             }
-
-            else
-            {
-                ViewBag.Mensaje = "La Tarea no pudo ser creada";
-                return View();
-            }
+            return RedirectToAction("Login", "Home");
         }
-
 
 
         public List<Tuple<int,string>> CarpetasUsuario()
@@ -168,29 +171,75 @@ namespace TpPW.Controllers
             return null;
         }
 
-        // public ActionResult Listado(int idCarpeta)
-        //{
-        //    List<Tarea> tareas = _tareaService.ObtenerTareasPorCarpeta(idCarpeta);
-        //    TempData["idCarpeta"] = idCarpeta;
-        //    return View(tareas);
-        //}
+    
 
         public ActionResult DescripcionTarea(int IdTar)
         {
+            DetalleTarea model = new DetalleTarea();
 
-            var listado = (from p in context.Tarea
-                       join r in context.ComentarioTarea on p.IdTarea equals r.IdTarea
-                       join a in context.ArchivoTarea on p.IdTarea equals a.IdTarea
-                       where p.IdTarea == IdTar
-                       select new TareaComentarioArchivo { tarea = p, comentario = r, archivo = a}).ToList();
+            model.Tarea = (from p in context.Tarea
+                         where p.IdTarea == IdTar select p).Single();
 
-            //var listaReservas = (from r in context.Tarea
-            //                     join p in context.ComentarioTarea on r.IdTarea equals p.IdTarea
-            //                     where r.IdUsuario == IdTar
-            //                     select new TareaComentarioArchivo { comentario = r, tarea = p }).ToList();
+            model.ListaComentarioTarea = (from p in context.ComentarioTarea
+                                 where p.IdTarea == IdTar
+                                 select p).ToList();
 
-            return View(listado);
+            model.ListaArchivoTarea = (from p in context.ArchivoTarea
+                                 where p.IdTarea == IdTar
+                                 select p).ToList();
+            
+            return View(model);
 
         }
+
+     
+
+        [HttpPost]
+        public ActionResult CrearComentario(ComentarioTarea nuevocomentario)
+        {
+            if (Session["usuario"] != null)
+          {
+
+                if (ModelState.IsValid)
+                {
+
+                    string NombreCarp = nuevocomentario.Texto;
+
+                    int IdTarea = nuevocomentario.IdTarea;
+
+                    nuevocomentario.FechaCreacion = DateTime.Now;
+
+
+                    //var usuario = (int)Session["id"];
+
+                    //var tarea = (from p in context.Tarea
+                    //           where p.IdUsuario == usuario
+                    //           orderby p.FechaCreacion
+                    //           select p).ToList();
+
+                    context.ComentarioTarea.Add(nuevocomentario);
+                    context.SaveChanges();
+
+                    if (nuevocomentario != null)
+                    {
+                        ViewBag.Mensaje = "Comentario Creado con exito";
+                        return RedirectToAction("DescripcionTarea", "Tarea", new {@IdTar = IdTarea});
+                    }
+                }
+                
+                else
+                {
+                    ViewBag.Mensaje = "El Comentario no pudo ser creado";
+                    return View("DescripcionTarea");
+                }
+
+              }
+
+
+            return RedirectToAction("Login", "Home");
+        }
+
+
+
     }
 }

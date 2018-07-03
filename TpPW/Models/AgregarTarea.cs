@@ -5,9 +5,7 @@ using System.Web;
 
 namespace TpPW.Models
 {
-    public class TareaCarpeta
+    public class AgregarTarea
     {
-        public Tarea tarea { get; set; }
-        public int IdCarpeta { get; set; }
     }
 }

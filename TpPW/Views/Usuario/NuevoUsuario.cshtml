@@ -2,7 +2,9 @@
 @{
     ViewBag.Title = "NuevoUsuario";
     Layout = "~/Views/Shared/_Home.cshtml";
+    
 }
+
 
 @using (Html.BeginForm())
 {
@@ -10,6 +12,7 @@
     <div class="panel panel-primary col-lg-4 col-lg-offset-4">
 
         <h3>Nuevo usuario</h3>
+        <h2 class="text-center">@ViewBag.Messege</h2>
         <hr />
         <div class="panel-body form-horizontal">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })

@@ -1,49 +1,59 @@
-﻿@model IEnumerable<TpPW.Models.TareaComentarioArchivo>
-
+﻿@model TpPW.Models.DetalleTarea
 @{
     ViewBag.Title = "DescripcionTarea";
+    Model.NuevoComentario.IdTarea = Model.Tarea.IdTarea;
     Layout = "~/Views/Shared/_User.cshtml";
 }
-<h2>DescripcionTarea</h2>
 
-
-@foreach (var item in Model)
-{
-    @Html.DisplayFor(modelItem => item.tarea.Nombre)
-    <div class="col-lg-6 col-lg-offset-3">
+<h4 class="text-center" style="color:red">@ViewBag.Messege</h4>
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-4">
         <div class="panel panel-info">
-            <div class="panel-heading text-center"><label class="info"> @Html.DisplayFor(modelItem => item.tarea.Nombre)</label></div>
+            <div class="panel-heading">
+                Tarea
+            </div>
+            <div class="panel-body form-horizontal">
+
+                <label>Tarea: </label> @Model.Tarea.Nombre <br />
+                <label>Descripcion</label> <br /> @Model.Tarea.Descripcion
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4"></div>
+</div>
+<div class="row">
+    <div class="col-lg-offset-1 col-lg-4">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Comentarios
+            </div>
             <div class="panel-body">
-                <div class="form-group col-lg-4">
-                    <label class="info">Id Tarea:</label>
-                    <label class="info">@Html.DisplayFor(modelItem => item.tarea.IdTarea)</label>
-                </div>
+                @foreach (var item in Model.ListaComentarioTarea)
+            {
+                    <label>@item.FechaCreacion</label> <br />@item.Texto <br />
+                }
 
-                <div class="form-group col-lg-4">
-                    <label class="info">Id Carpeta:</label>
-                    <label class="info">@Html.DisplayFor(modelItem => item.tarea.IdCarpeta)</label>
-                </div>
-                <div class="form-group col-lg-4">
-                    <label class="info">Fecha creacion:</label>
-                    <label class="info">@Html.DisplayFor(modelItem => item.tarea.FechaCreacion)</label>
-                </div>
-                <div class="form-group col-lg-4">
-                    <label class="info">Prioridad:</label>
-                    <label class="info">@Html.DisplayFor(modelItem => item.tarea.Prioridad)</label>
-                </div>
-                <div class="form-group col-lg-4">
-                    <label class="info" q>Estimado en Horas:</label>
-                    <label class="info">@Html.DisplayFor(modelItem => item.tarea.EstimadoHoras) Hs</label>
-                </div>
-                @Html.DisplayFor(modelItem => item.archivo.RutaArchivo)
-
-                @Html.DisplayFor(modelItem => item.comentario.Texto)
-
-                @Html.TextBoxFor(modelItem => item.nuevoComentario)
+                @using (Html.BeginForm("CrearComentario", "Tarea"))
+                {
+                    @Html.TextAreaFor(m => m.NuevoComentario.Texto)
+                    @Html.HiddenFor(m => m.NuevoComentario.IdTarea)
+                    <input type="submit" value="Comentar" class="btn btn-primary"/>
+                }
 
             </div>
         </div>
-
-
     </div>
-}
+    <div class="col-lg-offset-2 col-lg-4">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Archivos
+            </div>
+            <div class="panel-body">
+                @foreach (var item in Model.ListaArchivoTarea)
+                {
+                    <label>@item.FechaCreacion</label><br />@item.RutaArchivo<br />
+                }
+            </div>
+        </div>
+    </div>
+</div>

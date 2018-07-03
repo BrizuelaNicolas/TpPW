@@ -35,9 +35,7 @@ namespace TpPW.Models
         [StringLength(200, ErrorMessage = "El {0} no puede superar los {1} caracteres")]
         public string Descripcion { get; set; }
 
-        [StringLength(2, ErrorMessage = "El {0} no puede superar los {1} caracteres")]
-        [Range(0,99)]
-        public Nullable<decimal> EstimadoHoras { get; set; }
+        public decimal? EstimadoHoras { get; set; }
 
         public Nullable<System.DateTime> FechaFin { get; set; }
 
