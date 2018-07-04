@@ -129,7 +129,7 @@ namespace TpPW.Controllers
 
                         var tarea = (from p in context.Tarea
                                      where p.IdUsuario == usuario
-                                     orderby p.FechaCreacion
+                                     orderby p.Prioridad ascending, p.FechaFin descending
                                      select p
                                  ).ToList();
 
