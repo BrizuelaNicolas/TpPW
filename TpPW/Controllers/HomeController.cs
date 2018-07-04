@@ -116,6 +116,7 @@ namespace TpPW.Controllers
                             Response.Cookies.Add(userCookie);
                             System.Diagnostics.Debug.WriteLine("Login - Cookie Usuario Id: " + userCookie["CookieUsuarioId"]);
                         }
+
                         //capturo todos los datos en una sesion
                         Session["usuario"] = myUsuario;
                         Session["email"] = myUsuario.Email;

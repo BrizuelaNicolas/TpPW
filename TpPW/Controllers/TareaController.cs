@@ -75,7 +75,7 @@ namespace TpPW.Controllers
 
                 List<Tarea> tarea = (from p in context.Tarea
                                      where p.IdUsuario == usuario
-                                     orderby p.FechaCreacion
+                                     orderby p.FechaFin descending
                                      select p
                                            ).ToList();
 

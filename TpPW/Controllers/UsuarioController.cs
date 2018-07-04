@@ -45,7 +45,7 @@ namespace TpPW.Controllers
 
             if (!isCaptchaValid)
             {
-                TempData["Error"] = "El captcha es inválido";
+                ViewBag.Messege = "El captcha es inválido";
             }
             else
             {
@@ -123,8 +123,6 @@ namespace TpPW.Controllers
                             {
 
 
-                                //No me sale
-
                                 EmailExisteInactivo(usuario);
                                 //CarpetaSer.CreoCarpetaNuevoUsuario(usuario);
 
@@ -147,7 +145,7 @@ namespace TpPW.Controllers
                 }
             }
 
-            ViewBag.Messege = "Algo salio mal";
+            ViewBag.Mensaje = "Algo salio mal";
             return RedirectToAction("NuevoUsuario");
         }
 

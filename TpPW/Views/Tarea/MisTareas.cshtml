@@ -64,14 +64,65 @@
                         @Html.DisplayFor(modelItem => item.Nombre)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Prioridad)
+                        @*@Html.DisplayFor(modelItem => item.Prioridad)*@
+                        @{
+        switch (item.Prioridad)
+        {
+            case 1:
+                    <text >
+                        Baja
+                    </text>
+            break;
+            case 2:
+                    <text>
+                        Media
+                    </text>
+            break;
+            case 3:
+                    <text>
+                        Alta
+                    </text>
+            break;
+            case 4:
+                    <text>
+                        Urgente
+                    </text>
+            break;
+            default:
+                    <text>
+                        -
+                    </text>
+            break;
+            }
+                        }
+
                     </td>
                      <td>
                         @Html.DisplayFor(modelItem => item.EstimadoHoras) Hs
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Completada)
-                    </td>
+                     <td>
+                         @*@Html.DisplayFor(modelItem => item.Completada)*@
+                         @{
+        switch (item.Completada)
+        {
+                        case 0:
+                     <text >
+                     No
+                     </text>
+                        break;
+                        case 1:
+                     <text>
+                     Si
+                     </text>
+                        break;
+                        default:
+                     <text>
+                     -
+                     </text>
+                        break;
+                        }
+                         }
+                     </td>
                     <td>
                         @Html.ActionLink("Ver detalles", "DescripcionTarea", new { IdTar = item.IdTarea })
                     </td>
