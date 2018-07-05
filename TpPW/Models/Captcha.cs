@@ -1,4 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Web;
+using TpPW.Models;
 
 namespace TpPW.Models.Entities
 {
@@ -9,20 +17,33 @@ namespace TpPW.Models.Entities
 
         public static bool Validate(string encodedResponse)
         {
+            var result = false;
+            var captchaResponse = encodedResponse;
+
             if (string.IsNullOrEmpty(encodedResponse)) return false;
-
             var client = new System.Net.WebClient();
+
             var secret = "6Leyol8UAAAAAAPsqeYil0NqhtGCQubxaG3kXmhK";
-
             if (string.IsNullOrEmpty(secret)) return false;
+                        
+            var googleReply = "https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}";
+            var requestUri = string.Format(googleReply, secret, captchaResponse);
+            var request = (HttpWebRequest)WebRequest.Create(requestUri);
 
-            var googleReply = client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secret, encodedResponse));
+            using (WebResponse response = request.GetResponse())
+            {
+                using (StreamReader stream = new StreamReader(response.GetResponseStream()))
+                {
+                    JObject jResponse = JObject.Parse(stream.ReadToEnd());
+                    var isSuccess = jResponse.Value<bool>("success");
+                    result = (isSuccess) ? true : false;
+                }
+            }
 
-            var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+            var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();      
 
-            var reCaptcha = serializer.Deserialize<Captcha>(googleReply);
 
-            return reCaptcha.Success;
+            return result;
         }
     }
 }

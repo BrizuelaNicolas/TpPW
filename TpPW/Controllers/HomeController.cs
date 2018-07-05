@@ -24,6 +24,8 @@ namespace TpPW.Controllers
         private CarpetaServicio CarpetaSer = new CarpetaServicio();
 
 
+
+
         public ActionResult Index()
       {
             Usuario CurrUser = (Usuario)Session["usuario"];
@@ -82,17 +84,18 @@ namespace TpPW.Controllers
         [HttpGet]
         public ActionResult Login()
         {
+            context.Configuration.ValidateOnSaveEnabled
             return View();
         }
 
         [HttpPost]
         public ActionResult Login(string email, string Contrasenia)
         {
+            var RecordarmeValue = Request.Form["Recordarme"];
 
             if (email != null && Contrasenia != null) //valido que el email y la contraseña sean las correctas con las de la base
             {
-                string RecordarmeValue = Request["Recordarme"];
-                System.Diagnostics.Debug.WriteLine("Login - Remember Me: " + RecordarmeValue);
+                
 
                 var myUsuario = context.Usuario
                                 .Where(b => b.Email == email)
@@ -106,17 +109,7 @@ namespace TpPW.Controllers
                 {
                     if (myUsuario.Activo != 0) // verifico si el usuario esta activo
                     {
-                        if (RecordarmeValue.Equals("true"))
-                        {
-                            HttpCookie userCookie = new HttpCookie("CookieUsuario");
-                            userCookie["CookieId"] = ProtectCookieInfo(myUsuario.IdUsuario.ToString(), "CookieInfo");
-                            userCookie["CookieEmail"] = ProtectCookieInfo(myUsuario.Email, "CookieInfo");
-                            userCookie["CookieContra"] = ProtectCookieInfo(myUsuario.Contrasenia, "CookieInfo");
-                            userCookie.Expires = DateTime.Now.AddDays(1d);
-                            Response.Cookies.Add(userCookie);
-                            System.Diagnostics.Debug.WriteLine("Login - Cookie Usuario Id: " + userCookie["CookieUsuarioId"]);
-                        }
-
+                        
                         //capturo todos los datos en una sesion
                         Session["usuario"] = myUsuario;
                         Session["email"] = myUsuario.Email;
@@ -182,6 +175,72 @@ namespace TpPW.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
+
+
+        public void Recordarme(string email, string Contrasenia)
+        {
+            var RecordarmeValue = Request.Form["Recordarme"];
+
+            var myUsuario = context.Usuario
+                            .Where(b => b.Email == email)
+                            .Where(a => a.Contrasenia == Contrasenia)
+                            .FirstOrDefault();
+
+          if (myUsuario != null)
+          {
+                    if (RecordarmeValue.Equals("true"))
+                    {
+
+                        //Borro cualquier cookies guardada anteriormente
+                            Response.Cookies.Clear();
+                        // establecer la nueva fecha de caducidad - a treinta días a partir de ahora 
+                            DateTime expiryDate = DateTime.Now.AddDays(30);
+                            //userCookie.Expires.AddMinutes(1);
+
+                        // crear un nuevo ticket de autenticación de formularios
+                            FormsAuthenticationTicket Usu = new FormsAuthenticationTicket(2, myUsuario.Contrasenia, DateTime.Now, expiryDate, true, String.Empty);
+                        // cifro usuario
+                            string encryptedUsu = FormsAuthentication.Encrypt(Usu);
+                        // creo una nueva cookie de autenticación y establece su fecha de caducidad 
+                            HttpCookie userCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedUsu);
+
+
+                    HttpCookie userInfo = new HttpCookie("userInfo");
+                    userInfo["Email"] = myUsuario.Email;
+                    userInfo["Contra"] = myUsuario.Contrasenia;
+
+                    userInfo.Expires.Add(new TimeSpan(0, 1, 0));
+                    Response.Cookies.Add(userInfo);
+                    //Creo la cookie
+                    Response.Cookies.Add(userCookie);
+
+                    HttpContext.Response.Cookies["Email"].Value = email;
+                        HttpContext.Response.Cookies["Contrasenia"].Value = Contrasenia;
+                        HttpContext.Response.Cookies["Email"].Expires = DateTime.Now.AddMinutes(2);
+                        HttpContext.Response.Cookies["Contrasenia"].Expires = DateTime.Now.AddMinutes(2);
+                        
+
+                    }
+                    else
+                    {
+                        HttpContext.Response.Cookies["Email"].Expires = DateTime.Now.AddMinutes(-1);
+                        HttpContext.Response.Cookies["Contrasenia"].Expires = DateTime.Now.AddMinutes(-1);
+
+                    }
+
+           
+                //capturo todos los datos en una sesion
+                Session["usuario"] = myUsuario;
+                Session["email"] = myUsuario.Email;
+                Session["nombre"] = myUsuario.Nombre;
+                Session["id"] = myUsuario.IdUsuario;
+                Session["contra"] = myUsuario.Contrasenia;
+
+
+                var usuario = (int)Session["id"];
+          }
+        }
+
 
 
         //Metodos para encriptar y desencriptar la cookie
