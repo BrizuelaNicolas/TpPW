@@ -31,7 +31,7 @@ namespace TpPW.Controllers
 
                 var carpeta = (from p in context.Carpeta
                                where p.IdUsuario == usuario
-                               orderby p.FechaCreacion
+                               orderby p.Nombre ascending
                                select p).ToList();
 
                 return View(carpeta);

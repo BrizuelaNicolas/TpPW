@@ -156,6 +156,7 @@ Bienvenido/a @HttpContext.Current.User.Identity.Name
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Completada)
+                        @Html.ActionLink("Completar", "../Tarea/CompletarTarea", new { IdTar = item.IdTarea })
                     </td>
                     <td>
                         @Html.ActionLink("Ver detalles", "../Tarea/DescripcionTarea", new { IdTar = item.IdTarea })

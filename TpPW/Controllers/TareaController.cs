@@ -89,6 +89,12 @@ namespace TpPW.Controllers
 
         }
 
+        //[HttpGet]
+        //public ActionResult Completar(int IdTar)
+        //{
+        //    return RedirectToAction("CompletarAdd");
+        //}
+
 
 
 
@@ -99,6 +105,7 @@ namespace TpPW.Controllers
             {
                 ViewBag.Carpetas = CarpetasUsuario();
                 return View();
+
             }
             return RedirectToAction("Login", "Home");
         }

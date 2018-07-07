@@ -58,11 +58,12 @@ namespace TpPW.Controllers
         {
             if (Session["usuario"] != null)
             {
+
                 var usuario = (int)Session["id"];
 
                 var carpeta = (from c in context.Carpeta where c.IdUsuario == usuario orderby c.FechaCreacion select c);
 
-                var tarea = (from t in context.Tarea where t.IdUsuario == usuario orderby t.FechaCreacion select t);
+                var tarea = (from t in context.Tarea where t.IdUsuario == usuario && t.Completada == 0 orderby t.Prioridad ascending, t.FechaFin ascending select t);
 
                 List<object> ctobjeto = new List<object>();
                 ctobjeto.Add(carpeta.ToList());
@@ -84,7 +85,7 @@ namespace TpPW.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            context.Configuration.ValidateOnSaveEnabled
+            //context.Configuration.ValidateOnSaveEnabled
             return View();
         }
 
@@ -121,7 +122,7 @@ namespace TpPW.Controllers
                         var usuario = (int)Session["id"];
 
                         var tarea = (from p in context.Tarea
-                                     where p.IdUsuario == usuario
+                                     where p.IdUsuario == usuario 
                                      orderby p.Prioridad ascending, p.FechaFin descending
                                      select p
                                  ).ToList();
