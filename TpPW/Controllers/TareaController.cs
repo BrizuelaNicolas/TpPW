@@ -95,6 +95,16 @@ namespace TpPW.Controllers
         //    return RedirectToAction("CompletarAdd");
         //}
 
+        public ActionResult TareaCompleta(int IdTar)
+        {
+           
+            Tarea tarea = context.Tarea.FirstOrDefault(t => t.IdTarea == IdTar);
+            tarea.Completada = 1;
+            context.SaveChanges();
+
+            return RedirectToAction("Home", "Home");
+
+        }
 
 
 
