@@ -41,38 +41,13 @@ namespace TpPW.Controllers
             {
                 var usuario = Convert.ToInt32(Session["id"]);
 
-                //List<Tarea> tarea = (from p in context.Tarea
-                //                     where p.IdUsuario == usuario
-                //                     orderby p.Prioridad ascending, p.FechaFin descending
-                //                     select p
-                //                           ).ToList();
+                List<Tarea> tarea = (from p in context.Tarea
+                                     where p.IdUsuario == usuario
+                                     orderby p.Prioridad ascending, p.FechaFin descending
+                                     select p
+                                           ).ToList();
 
-                //return View(tarea);
-
-                string filtro = Request["filtrado"];
-                //if (filtro != null && filtro != "")
-                //{
-                //    var tareasfil = (from p in context.Tarea where p.IdUsuario == usuario && p.Completada == 1 orderby p.Prioridad ascending, p.FechaFin descending select p).ToList();
-                //    return View(tareasfil);
-                //}
-                //else
-                //{
-                //    var tareasfil = (from p in context.Tarea where p.IdUsuario == usuario && p.Completada == 0 orderby p.Prioridad ascending, p.FechaFin descending select p).ToList();
-                //    return View(tareasfil);
-                //}
-
-                switch (filtro)
-                {
-                    case "1":
-                        var tareasfil = (from p in context.Tarea where p.IdUsuario == usuario && p.Completada == 0 orderby p.Prioridad ascending, p.FechaFin descending select p).ToList();
-                        return View(tareasfil);
-                    case "2":
-                        var tareascom = (from p in context.Tarea where p.IdUsuario == usuario && p.Completada == 1 orderby p.Prioridad ascending, p.FechaFin descending select p).ToList();
-                        return View(tareascom);
-                }
-                var tareas = (from p in context.Tarea where p.IdUsuario == usuario orderby p.Prioridad ascending, p.FechaFin descending select p).ToList();
-                return View(tareas);
-
+                return View(tarea);
             }
             else // si no existe cookies, que verifique session
             {
@@ -99,22 +74,6 @@ namespace TpPW.Controllers
             }
         }
 
-        //[HttpGet]
-        //public ActionResult Completar(int IdTar)
-        //{
-        //    return RedirectToAction("CompletarAdd");
-        //}
-
-        public ActionResult TareaCompleta(int IdTar)
-        {
-           
-            Tarea tarea = context.Tarea.FirstOrDefault(t => t.IdTarea == IdTar);
-            tarea.Completada = 1;
-            context.SaveChanges();
-
-            return RedirectToAction("Home", "Home");
-
-        }
 
 
 
