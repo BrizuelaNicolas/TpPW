@@ -50,14 +50,18 @@ namespace TpPW.Controllers
                 if (Session["usuario"] != null)
                 {
                     var usuario = Convert.ToInt32(Session["id"]);
-
-                    List<Tarea> tarea = (from p in context.Tarea
-                                         where p.IdUsuario == usuario
-                                         orderby p.Prioridad ascending, p.FechaFin descending
-                                         select p
-                                               ).ToList();
-
-                    return View(tarea);
+                    string filtro = Request["filtrado"];
+                    switch (filtro)
+                    {
+                        case "1":
+                            var tareasfil = (from p in context.Tarea where p.IdUsuario == usuario && p.Completada == 0 orderby p.Prioridad ascending, p.FechaFin descending select p).ToList();
+                            return View(tareasfil);
+                        case "2":
+                            var tareascom = (from p in context.Tarea where p.IdUsuario == usuario && p.Completada == 1 orderby p.Prioridad ascending, p.FechaFin descending select p).ToList();
+                            return View(tareascom);
+                    }
+                    var tareas = (from p in context.Tarea where p.IdUsuario == usuario orderby p.Prioridad ascending, p.FechaFin descending select p).ToList();
+                    return View(tareas);
                 }
 
                 else
