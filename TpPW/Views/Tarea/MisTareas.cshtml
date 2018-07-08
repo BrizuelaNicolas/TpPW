@@ -1,13 +1,16 @@
-﻿@model TpPW.Models.Tarea
+﻿@model IEnumerable<TpPW.Models.Tarea>
 
 @{
     ViewBag.Title = "MisTareas";
     Layout = "~/Views/Shared/_User.cshtml";
 }
 
-<h2>Mis Tareas</h2>
+<h2 class="text-center">Mis Tareas</h2>
 
-<h4 class="text-center" style="color:red">@ViewBag.Messege</h4>
+<hr />
+
+
+<h4 class="text-center">@ViewBag.MensajeError</h4>
 <div class="col-lg-10 col-lg-offset-1">
     <table class="table table-bordered text-center">
         <tr class="info">
@@ -20,9 +23,9 @@
             <th class="text-center">
                 Prioridad
             </th>
-            <th class="text-center">
+            @*<th class="text-center">
                 Carpeta
-            </th>
+            </th>*@
             <th class="text-center">
                 Estimado
             </th>
@@ -30,12 +33,12 @@
                 Completada
             </th>
             <th>
-                
+
             </th>
             <th>
-                
+
             </th>
-            
+
         </tr>
 
         @foreach (var item in Model)
@@ -52,7 +55,7 @@
 
                 @:
                 <tr>
-                 
+
 
                     <td>
                         @Html.DisplayFor(modelItem => item.FechaFin)
@@ -61,20 +64,69 @@
                         @Html.DisplayFor(modelItem => item.Nombre)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Prioridad)
+                        @*@Html.DisplayFor(modelItem => item.Prioridad)*@
+                        @{
+        switch (item.Prioridad)
+        {
+            case 1:
+                    <text >
+                        Baja
+                    </text>
+            break;
+            case 2:
+                    <text>
+                        Media
+                    </text>
+            break;
+            case 3:
+                    <text>
+                        Alta
+                    </text>
+            break;
+            case 4:
+                    <text>
+                        Urgente
+                    </text>
+            break;
+            default:
+                    <text>
+                        -
+                    </text>
+            break;
+            }
+                        }
+
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IdCarpeta)
-                    </td>
-                    <td>
+                     <td>
                         @Html.DisplayFor(modelItem => item.EstimadoHoras) Hs
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Completada)
-                    </td>
+                     <td>
+                         @*@Html.DisplayFor(modelItem => item.Completada)*@
+                         @{
+        switch (item.Completada)
+        {
+                        case 0:
+                     <text >
+                     No
+                     </text>
+                        break;
+                        case 1:
+                     <text>
+                     Si
+                     </text>
+                        break;
+                        default:
+                     <text>
+                     -
+                     </text>
+                        break;
+                        }
+                         }
+                     </td>
                     <td>
                         @Html.ActionLink("Ver detalles", "DescripcionTarea", new { IdTar = item.IdTarea })
                     </td>
+                   
                     <td>
                         <input type="checkbox" id="TareaCompleta" name="TareaCom" /> Completa
                     </td>

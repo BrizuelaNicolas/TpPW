@@ -42,13 +42,13 @@ namespace TpPW.Models
         [Required(ErrorMessage = "Es obligatorio")]
         [MaxLength(20, ErrorMessage = "No puede superar los {1} caracteres")]
         // [MinLength(5, ErrorMessage = "{0} Tiene que tener mínimo {1} caracteres")]
-       // [RegularExpression("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,15}$", ErrorMessage = "Debe tener aun que sea una Mayusculas una minuscula y un numero")]
+        [RegularExpression("^(?=\\w*\\d)(?=\\w*[A-Z])(?=\\w*[a-z])\\S{0,20}$", ErrorMessage = "Debe tener un maximo de 20 caracteres, aun que sea una Mayusculas una minuscula y un numero")]
         public string Contrasenia { get; set; }
 
         [Required(ErrorMessage = "Es obligatorio")]       
         [MaxLength(20, ErrorMessage = "No puede superar los {1} caracteres")]
         // [MinLength(5, ErrorMessage = "{0} Tiene que tener mínimo {1} caracteres")]
-       // [RegularExpression("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,15}$", ErrorMessage = "Debe tener aun que sea una Mayusculas una minuscula y un numero")]
+        [RegularExpression("^(?=\\w*\\d)(?=\\w*[A-Z])(?=\\w*[a-z])\\S{0,20}$", ErrorMessage = "Debe tener un maximo de 20 caracteres, aun que sea una Mayusculas una minuscula y un numero")]
         [Compare("Contrasenia", ErrorMessage = "Las contraseñas ingresadas no son identicas")]
         //Agrego para comparacion de contraseñas
         public string ContraseniaConfirmacion { get; set; }
