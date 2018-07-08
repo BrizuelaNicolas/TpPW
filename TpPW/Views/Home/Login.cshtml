@@ -11,7 +11,8 @@
         <div class="panel-heading">Login</div>
         <div class="panel-body">
             <form action="Login" method="post">
-                <div class="form-group">
+               <div class="form-group">
+
                     <label for="email">Email</label>
                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control", title = "Debe ingresar un email válido" })
                     @Html.ValidationMessageFor(m => m.Email)
@@ -22,13 +23,12 @@
                     @Html.ValidationMessageFor(m => m.Contrasenia)
                 </div>
                 <label>
-                   <input type="checkbox" checked id="Recordarme" name="Recordarme" value="true" runat="server"> Recordame
+                   <input type="checkbox" id="Recordarme" name="Recordarme" value="true" runat="server"> Recordame
                 </label>
                 <br />
                 <button type="submit" class="btn btn-primary">Iniciar</button>
                 <button type="reset" class="btn btn-default">Cancelar</button>
-
-            </form>
+          </form>
         </div>
     </div>
 </div>

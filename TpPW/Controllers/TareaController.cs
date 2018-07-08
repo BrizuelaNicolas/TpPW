@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using TpPW.Models;
 using System.Web.Security;
 using System.Web.Routing;
+using System.Web;
 
 namespace TpPW.Controllers
 {
@@ -31,47 +32,14 @@ namespace TpPW.Controllers
 
 
 
-        ////Listamos las tareas
-        //public ActionResult MisTareas()
-        //{
-        //    if (Session["usuario"] != null)
-        //    {
-        //        var usuario = (int)Session["id"];
-
-        //        MisTareasViewModel model = new MisTareasViewModel();
-
-        //        var tareas = (from p in context.Tarea
-        //                      join q in context.Carpeta on p.IdUsuario equals q.IdUsuario
-        //                      where p.IdUsuario == usuario
-        //                      orderby p.FechaCreacion
-        //                      select new { p, q.Nombre }
-        //                                   ).ToList();
-
-        //        foreach (var item in tareas)
-        //        {
-        //            model.Tareas.Add(new Tuple<Tarea, string>(item.p, item.Nombre));
-        //        }
-
-        //        return View(model);
-        //    }
-        //    else
-        //    {
-        //        ViewBag.MensajeError = "El Usuario no posee Tareas";
-        //        return RedirectToAction("../Carpeta/MisCarpetas");
-        //    }
-
-        //}
-
-
-
 
         //Listamos las tareas
         public ActionResult MisTareas()
-        {
-            if (Session["usuario"] != null)
-            {
-                var usuario = (int)Session["id"];
 
+        {  //SI existe la cookies que se cargue
+            if (Request.Cookies["CookieUsuario"] != null)
+            {
+                var usuario = Convert.ToInt32(Session["id"]);
 
                 //List<Tarea> tarea = (from p in context.Tarea
                 //                     where p.IdUsuario == usuario
@@ -106,12 +74,29 @@ namespace TpPW.Controllers
                 return View(tareas);
 
             }
-            else
+            else // si no existe cookies, que verifique session
             {
-                ViewBag.MensajeError = "El Usuario no posee Tareas";
-                return RedirectToAction("../Carpeta/MisCarpetas");
-            }
+                if (Session["usuario"] != null)
+                {
+                    var usuario = Convert.ToInt32(Session["id"]);
 
+
+                    List<Tarea> tarea = (from p in context.Tarea
+                                         where p.IdUsuario == usuario
+                                         orderby p.Prioridad ascending, p.FechaFin descending
+                                         select p
+                                               ).ToList();
+
+                    return View(tarea);
+                }
+
+                else
+                {
+                    ViewBag.MensajeError = "El Usuario no posee Tareas";
+                    return RedirectToAction("../Carpeta/MisCarpetas");
+                }
+
+            }
         }
 
         //[HttpGet]
@@ -246,14 +231,9 @@ namespace TpPW.Controllers
         {
             if (Session["usuario"] != null)
           {
-
                 if (ModelState.IsValid)
-                {
-
-                    string NombreCarp = nuevocomentario.Texto;
-
+                {                    
                     int IdTarea = nuevocomentario.IdTarea;
-
                     nuevocomentario.FechaCreacion = DateTime.Now;
 
                     context.ComentarioTarea.Add(nuevocomentario);
@@ -264,17 +244,13 @@ namespace TpPW.Controllers
                         ViewBag.Mensaje = "Comentario Creado con exito";
                         return RedirectToAction("DescripcionTarea", "Tarea", new {@IdTar = IdTarea});
                     }
-                }
-                
+                }                
                 else
                 {
                     ViewBag.Mensaje = "El Comentario no pudo ser creado";
                     return View("DescripcionTarea");
                 }
-
               }
-
-
             return RedirectToAction("Login", "Home");
         }
 
@@ -282,26 +258,22 @@ namespace TpPW.Controllers
 
 
 
-
+        //Metodo subir archivo
         [HttpPost]
-        public ActionResult SubirArchivo(ArchivoTarea nuevoArchivo)
+        public ActionResult SubirArchivo(ArchivoTarea nuevoArchivo) //, HttpPostedFileBase adjunto
         {
             if (Session["usuario"] != null)
             {
-
                 if (ModelState.IsValid)
                 {
-
-                    if (Request.Files.Count > 1 && Request.Files[0].ContentLength > 0)
-                    {
-                        string nombreSignificativo = nuevoArchivo.NombreArchivo;
-
-                        string subirArchivo = ArchivoModelView.Guardar(Request.Files[0], nombreSignificativo);
-                        nuevoArchivo.RutaArchivo = subirArchivo;
-                    }
-
                     int IdTarea = nuevoArchivo.IdTarea;
+                    //int IdTarea = IdTar;
 
+                    //if (nuevoArchivo != null)
+                    //{
+                    //    string subirArchivo = ArchivoModelView.Guardar(adjunto, adjunto.FileName, $"/archivos/tareas/{IdTarea}/");
+                    //    nuevoArchivo.RutaArchivo = subirArchivo;
+                    //}
                     nuevoArchivo.FechaCreacion = DateTime.Now;
 
                     context.ArchivoTarea.Add(nuevoArchivo);
@@ -309,21 +281,17 @@ namespace TpPW.Controllers
 
                     if (nuevoArchivo != null)
                     {
-                        ViewBag.Mensaje = "Archivo adjuntado con exito";
+                        ViewBag.ArchivoOK = "Archivo adjuntado con exito";
                         return RedirectToAction("DescripcionTarea", "Tarea", new { @IdTar = IdTarea });
                     }
                 }
-
                 else
                 {
-                    ViewBag.Mensaje = "El archivo no pudo ser adjuntado";
+                    ViewBag.ArchivoNo = "El archivo no pudo ser adjuntado";
                     return View("DescripcionTarea");
                 }
-
             }
-
-
-            return RedirectToAction("Login", "Home");
+          return RedirectToAction("Login", "Home");
         }
 
 
