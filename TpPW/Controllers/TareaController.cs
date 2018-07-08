@@ -95,8 +95,11 @@ namespace TpPW.Controllers
             //SI existe la cookies que se cargue
             if (Request.Cookies["CookieUsuario"] != null)
             {
-                ViewBag.Carpetas = CarpetasUsuario();
-                return View();
+                if (Session["usuario"] != null)
+                {
+                    ViewBag.Carpetas = CarpetasUsuario();
+                    return View();
+                }
             }
             else //Si no existe una cookies verifico session
             {
@@ -128,7 +131,7 @@ namespace TpPW.Controllers
                         tarea.FechaFin = DateTime.Now;
                     }
 
-                    var usuario = (int)Session["id"];
+                    var usuario = Convert.ToInt32(Session["id"]);
 
                     tarea.IdUsuario = usuario;
 
@@ -162,7 +165,7 @@ namespace TpPW.Controllers
                             tarea.FechaFin = DateTime.Now;
                         }
 
-                        var usuario = (int)Session["id"];
+                        var usuario = Convert.ToInt32(Session["id"]);
 
                         tarea.IdUsuario = usuario;
 

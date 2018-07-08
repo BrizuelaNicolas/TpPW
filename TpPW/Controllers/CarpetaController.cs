@@ -86,7 +86,7 @@ namespace TpPW.Controllers
                     carpeta.FechaCreacion = DateTime.Now.Date;
 
 
-                    var usuario = (int)Session["id"];
+                    var usuario = Convert.ToInt32(Session["id"]);
 
                     var car = (from p in context.Carpeta
                                where p.IdUsuario == usuario

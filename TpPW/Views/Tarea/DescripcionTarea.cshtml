@@ -69,12 +69,14 @@
                         @using (Html.BeginForm("SubirArchivo", "Tarea"))
                         {
                            
-                            @Html.TextBoxFor(m => m.NuevoArchivo.RutaArchivo, new { type = "file"@*, id = "adjunto"*@ })
-                           
+                            @*@Html.TextBoxFor(m => m.NuevoArchivo.RutaArchivo, new { type = "file"@*, id = "adjunto"})*@
+
+                            <input type="file" name="adjunto" id="adjunto" />
+
                             @Html.HiddenFor(m => m.Tarea.IdTarea)
-                            @Html.HiddenFor(m => m.NuevoArchivo.IdTarea)
+                            @*@Html.HiddenFor(m => m.NuevoArchivo.IdTarea)*@
                             <br />
-                            <input type="submit" value="Adjuntar" class="btn btn-primary" />
+                            <input type="submit" value="Adjuntar" class="btn btn-primary" id="SubirArchivo" />
                         }
                 
 </div>
