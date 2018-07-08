@@ -11,6 +11,7 @@ namespace TpPW.Controllers
 {
     public class TareaController : Controller
     {
+        TareaRepositorio tareaRepositorio = new TareaRepositorio();
         //Conexion con sql - entities
         public TareasEntities context = new TareasEntities();
 
@@ -268,25 +269,26 @@ namespace TpPW.Controllers
 
         //Metodo subir archivo
         [HttpPost]
-        public ActionResult SubirArchivo(ArchivoTarea nuevoArchivo) //, HttpPostedFileBase adjunto
+        public ActionResult SubirArchivo(ArchivoTarea nuevoArchivo, HttpPostedFileBase adjunto) //, HttpPostedFileBase adjunto
         {
             if (Session["usuario"] != null)
             {
                 if (ModelState.IsValid)
                 {
-                    int IdTarea = nuevoArchivo.IdTarea;                 
                     
-                    //nuevoArchivo.RutaArchivo = ArchivoModelView.Guardar(Request.Files[0], Request.Files[0].FileName, $"/archivos/tareas/{IdTarea}/");
+                    var IdTarea = nuevoArchivo.IdTarea;
+                    
+                    Tarea tarea = tareaRepositorio.buscarPorIdTarea(IdTarea);
 
-                    if (nuevoArchivo.RutaArchivo != null)
+                    HttpPostedFileBase file = this.HttpContext.Request.Files.Get("adjunto");
+                                     
+
+                    if (adjunto.ContentLength > 0)
                     {
-                        string subirArchivo = ArchivoModelView.Guardar(Request.Files[0], Request.Files[0].FileName, $"/archivos/tareas/{IdTarea}/");
-                        nuevoArchivo.RutaArchivo = subirArchivo;
-                    }
-                    nuevoArchivo.FechaCreacion = DateTime.Now;
+                       var filePath = ArchivoModelView.Guardar(adjunto, adjunto.FileName, $"/archivos/tareas/{IdTarea}/");
+                        tareaRepositorio.AgregarArchivo(IdTarea, filePath);
 
-                    context.ArchivoTarea.Add(nuevoArchivo);
-                    context.SaveChanges();
+                    }
 
                     if (nuevoArchivo != null)
                     {
@@ -297,7 +299,7 @@ namespace TpPW.Controllers
                 else
                 {
                     ViewBag.ArchivoNo = "El archivo no pudo ser adjuntado";
-                    return View("DescripcionTarea");
+                    return View("Home","Home");
                 }
             }
           return RedirectToAction("Login", "Home");

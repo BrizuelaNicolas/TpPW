@@ -65,15 +65,15 @@
 
                 }
                 
-                        @using (Html.BeginForm("SubirArchivo", "Tarea"))
-                        {
-                           
-                            @Html.TextBoxFor(m => m.NuevoArchivo.RutaArchivo, new { type = "file"})
-                                                     
-                            @Html.HiddenFor(m => m.NuevoArchivo.IdTarea)
-                            <br />
+                @using (Html.BeginForm("SubirArchivo", "Tarea", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                                      
+                    <input type="file" name="adjunto" id="adjunto" />
+
+                    @Html.HiddenFor(m => m.NuevoArchivo.IdTarea)
+                    <br />
                             <input type="submit" value="Adjuntar" class="btn btn-primary" id="SubirArchivo" />
-                        }
+                }
                 
 </div>
         </div>

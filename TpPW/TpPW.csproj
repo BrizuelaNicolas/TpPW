@@ -156,6 +156,7 @@
     </Compile>
     <Compile Include="Models\TareaCarpeta.cs" />
     <Compile Include="Models\TareaComentarioArchivo.cs" />
+    <Compile Include="Models\TareaRepositorio.cs" />
     <Compile Include="Models\Tareas.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
