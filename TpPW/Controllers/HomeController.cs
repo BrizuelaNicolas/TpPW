@@ -47,10 +47,26 @@ namespace TpPW.Controllers
         {    //SI existe la cookies que se cargue
             if (Request.Cookies["CookieUsuario"] != null)
             {
+<<<<<<< HEAD
                 Session["id"] = UnprotectCookieInfo(Request.Cookies["CookieUsuario"]["CookieUsuarioId"], "CookieInfo");
 
                 var usuario = Convert.ToInt32(Session["id"]);
                 var carpeta = (from c in context.Carpeta where c.IdUsuario == usuario orderby c.FechaCreacion select c);
+=======
+<<<<<<< HEAD
+                Session["id"] = UnprotectCookieInfo(Request.Cookies["CookieUsuario"]["CookieUsuarioId"], "CookieInfo");
+=======
+
+                var usuario = (int)Session["id"];
+>>>>>>> f327ab29adbf7a5fb4f20f7d3392471014cd5baf
+
+                var usuario = Convert.ToInt32(Session["id"]);
+                var carpeta = (from c in context.Carpeta where c.IdUsuario == usuario orderby c.FechaCreacion select c);
+<<<<<<< HEAD
+=======
+
+>>>>>>> f327ab29adbf7a5fb4f20f7d3392471014cd5baf
+>>>>>>> 0eac57c9e1a6f7e78e611a0888ce80e2f7fb21e3
                 var tarea = (from t in context.Tarea where t.IdUsuario == usuario && t.Completada == 0 orderby t.Prioridad ascending, t.FechaFin ascending select t);
 
                 List<object> ctobjeto = new List<object>();
@@ -87,6 +103,13 @@ namespace TpPW.Controllers
         [HttpGet]
         public ActionResult Login()
         {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+            //context.Configuration.ValidateOnSaveEnabled
+>>>>>>> f327ab29adbf7a5fb4f20f7d3392471014cd5baf
+>>>>>>> 0eac57c9e1a6f7e78e611a0888ce80e2f7fb21e3
             return View();
         }
         
@@ -191,10 +214,17 @@ namespace TpPW.Controllers
 
         
 
+<<<<<<< HEAD
 
 
 
 
+=======
+
+
+
+
+>>>>>>> 0eac57c9e1a6f7e78e611a0888ce80e2f7fb21e3
         //public void Recordarme(Usuario usuario)
         //{
         //    var RecordarmeValue = Request.Form["Recordarme"];

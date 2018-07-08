@@ -35,6 +35,7 @@ namespace TpPW.Controllers
 
         //Listamos las tareas
         public ActionResult MisTareas()
+<<<<<<< HEAD
 
         {  //SI existe la cookies que se cargue
             if (Request.Cookies["CookieUsuario"] != null)
@@ -49,6 +50,38 @@ namespace TpPW.Controllers
 
                 return View(tarea);
             }
+            else // si no existe cookies, que verifique session
+            {
+                if (Session["usuario"] != null)
+                {
+                    var usuario = Convert.ToInt32(Session["id"]);
+=======
+
+        {  //SI existe la cookies que se cargue
+            if (Request.Cookies["CookieUsuario"] != null)
+            {
+                var usuario = Convert.ToInt32(Session["id"]);
+>>>>>>> 0eac57c9e1a6f7e78e611a0888ce80e2f7fb21e3
+
+
+                    List<Tarea> tarea = (from p in context.Tarea
+                                         where p.IdUsuario == usuario
+                                         orderby p.Prioridad ascending, p.FechaFin descending
+                                         select p
+                                               ).ToList();
+
+                    return View(tarea);
+                }
+
+                else
+                {
+                    ViewBag.MensajeError = "El Usuario no posee Tareas";
+                    return RedirectToAction("../Carpeta/MisCarpetas");
+                }
+
+            }
+<<<<<<< HEAD
+=======
             else // si no existe cookies, que verifique session
             {
                 if (Session["usuario"] != null)
@@ -72,6 +105,7 @@ namespace TpPW.Controllers
                 }
 
             }
+>>>>>>> 0eac57c9e1a6f7e78e611a0888ce80e2f7fb21e3
         }
 
 

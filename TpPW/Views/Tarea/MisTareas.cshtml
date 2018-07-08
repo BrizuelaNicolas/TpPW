@@ -10,7 +10,33 @@
 <hr />
 
 
+<<<<<<< HEAD
 <h4 class="text-center">@ViewBag.MensajeError</h4>
+=======
+<<<<<<< HEAD
+<h4 class="text-center">@ViewBag.MensajeError</h4>
+=======
+<h5>@ViewBag.Mensaje</h5>
+<div>
+    <form method="get" action="" class="form-group">
+        <div class="col-lg-6">
+            <div class="col-lg-2 col-lg-offset-2">
+                <select for="filtrado" id="filtrado" name="filtrado" class="form-control">
+                    <option value=""> Todos</option>
+                    <option @( Request.Form["filtrado"] == "2" ? "selected" : "") value="2"> Completas</option>
+                    <option @( Request.Form["filtrado"] == "1" ? "selected" : "") value="1">Incompletas</option>
+                </select>
+            </div>
+            <div class="col-lg-2">
+                <input type="submit" value="Aplicar Filtros" class="btn btn-primary pull-right" />
+            </div>
+        </div>
+    </form>
+</div>
+<br /><br />
+
+>>>>>>> f327ab29adbf7a5fb4f20f7d3392471014cd5baf
+>>>>>>> 0eac57c9e1a6f7e78e611a0888ce80e2f7fb21e3
 <div class="col-lg-10 col-lg-offset-1">
     <table class="table table-bordered text-center">
         <tr class="info">
