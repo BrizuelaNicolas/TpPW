@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "DescripcionTarea";
     Model.NuevoComentario.IdTarea = Model.Tarea.IdTarea;
+    Model.NuevoArchivo.IdTarea = Model.Tarea.IdTarea;
     Layout = "~/Views/Shared/_User.cshtml";
 }
 <h2 class="text-center">Descripcion Tarea</h2>
@@ -63,18 +64,13 @@
                     @Html.HiddenFor(m => m.Tarea.IdTarea)
 
                 }
-                @Html.HiddenFor(m => m.Tarea.IdTarea)
-                @Html.HiddenFor(m => m.NuevoArchivo.IdTarea)
-
+                
                         @using (Html.BeginForm("SubirArchivo", "Tarea"))
                         {
                            
-                            @*@Html.TextBoxFor(m => m.NuevoArchivo.RutaArchivo, new { type = "file"@*, id = "adjunto"})*@
-
-                            <input type="file" name="adjunto" id="adjunto" />
-
-                            @Html.HiddenFor(m => m.Tarea.IdTarea)
-                            @*@Html.HiddenFor(m => m.NuevoArchivo.IdTarea)*@
+                            @Html.TextBoxFor(m => m.NuevoArchivo.RutaArchivo, new { type = "file"})
+                                                     
+                            @Html.HiddenFor(m => m.NuevoArchivo.IdTarea)
                             <br />
                             <input type="submit" value="Adjuntar" class="btn btn-primary" id="SubirArchivo" />
                         }

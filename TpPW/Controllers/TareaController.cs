@@ -274,14 +274,15 @@ namespace TpPW.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    int IdTarea = nuevoArchivo.IdTarea;
-                    //int IdTarea = IdTar;
+                    int IdTarea = nuevoArchivo.IdTarea;                 
+                    
+                    //nuevoArchivo.RutaArchivo = ArchivoModelView.Guardar(Request.Files[0], Request.Files[0].FileName, $"/archivos/tareas/{IdTarea}/");
 
-                    //if (nuevoArchivo != null)
-                    //{
-                    //    string subirArchivo = ArchivoModelView.Guardar(adjunto, adjunto.FileName, $"/archivos/tareas/{IdTarea}/");
-                    //    nuevoArchivo.RutaArchivo = subirArchivo;
-                    //}
+                    if (nuevoArchivo.RutaArchivo != null)
+                    {
+                        string subirArchivo = ArchivoModelView.Guardar(Request.Files[0], Request.Files[0].FileName, $"/archivos/tareas/{IdTarea}/");
+                        nuevoArchivo.RutaArchivo = subirArchivo;
+                    }
                     nuevoArchivo.FechaCreacion = DateTime.Now;
 
                     context.ArchivoTarea.Add(nuevoArchivo);
