@@ -155,17 +155,9 @@ Bienvenido/a @HttpContext.Current.User.Identity.Name
                         @Html.DisplayFor(modelItem => item.EstimadoHoras) Hs
                     </td>
                     <td>
-<<<<<<< HEAD
+
                         @Html.DisplayFor(modelItem => item.Completada)
                         @Html.ActionLink("Completar", "../Tarea/CompletarTarea", new { IdTar = item.IdTarea })
-=======
-<<<<<<< HEAD
-                        @Html.DisplayFor(modelItem => item.Completada)
-                        @Html.ActionLink("Completar", "../Tarea/CompletarTarea", new { IdTar = item.IdTarea })
-=======
-                        @Html.ActionLink("Completar", "../Tarea/TareaCompleta", new { IdTar = item.IdTarea })
->>>>>>> f327ab29adbf7a5fb4f20f7d3392471014cd5baf
->>>>>>> 0eac57c9e1a6f7e78e611a0888ce80e2f7fb21e3
                     </td>
                     <td>
                         @Html.ActionLink("Ver detalles", "../Tarea/DescripcionTarea", new { IdTar = item.IdTarea })

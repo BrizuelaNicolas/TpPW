@@ -14,14 +14,6 @@ namespace TpPW.Controllers
         //Conexion con sql - entities
         public TareasEntities context = new TareasEntities();
 
-
-        //// GET: Tarea
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
-
-
         //cerramos sesion
         public ActionResult Logout()
         {
@@ -29,15 +21,12 @@ namespace TpPW.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
-
-
-
+        
 
         //Listamos las tareas
         public ActionResult MisTareas()
-<<<<<<< HEAD
 
-        {  //SI existe la cookies que se cargue
+     {  //SI existe la cookies que se cargue
             if (Request.Cookies["CookieUsuario"] != null)
             {
                 var usuario = Convert.ToInt32(Session["id"]);
@@ -55,14 +44,6 @@ namespace TpPW.Controllers
                 if (Session["usuario"] != null)
                 {
                     var usuario = Convert.ToInt32(Session["id"]);
-=======
-
-        {  //SI existe la cookies que se cargue
-            if (Request.Cookies["CookieUsuario"] != null)
-            {
-                var usuario = Convert.ToInt32(Session["id"]);
->>>>>>> 0eac57c9e1a6f7e78e611a0888ce80e2f7fb21e3
-
 
                     List<Tarea> tarea = (from p in context.Tarea
                                          where p.IdUsuario == usuario
@@ -80,45 +61,27 @@ namespace TpPW.Controllers
                 }
 
             }
-<<<<<<< HEAD
-=======
-            else // si no existe cookies, que verifique session
-            {
-                if (Session["usuario"] != null)
-                {
-                    var usuario = Convert.ToInt32(Session["id"]);
 
-
-                    List<Tarea> tarea = (from p in context.Tarea
-                                         where p.IdUsuario == usuario
-                                         orderby p.Prioridad ascending, p.FechaFin descending
-                                         select p
-                                               ).ToList();
-
-                    return View(tarea);
-                }
-
-                else
-                {
-                    ViewBag.MensajeError = "El Usuario no posee Tareas";
-                    return RedirectToAction("../Carpeta/MisCarpetas");
-                }
-
-            }
->>>>>>> 0eac57c9e1a6f7e78e611a0888ce80e2f7fb21e3
-        }
-
-
+        } 
 
 
         //[MyAuthorizeUsuario]
         public ActionResult NuevaTarea()
         {
-            if (Session["usuario"] != null)
+            //SI existe la cookies que se cargue
+            if (Request.Cookies["CookieUsuario"] != null)
             {
                 ViewBag.Carpetas = CarpetasUsuario();
                 return View();
+            }
+            else //Si no existe una cookies verifico session
+            {
+                if (Session["usuario"] != null)
+                {
+                    ViewBag.Carpetas = CarpetasUsuario();
+                    return View();
 
+                }
             }
             return RedirectToAction("Login", "Home");
         }
@@ -127,7 +90,8 @@ namespace TpPW.Controllers
         [HttpPost]
         public ActionResult NuevaTarea(Tarea tarea)
         {
-            if (Session["usuario"] != null)
+            //SI existe la cookies que se cargue
+            if (Request.Cookies["CookieUsuario"] != null)
             {
                 ViewBag.Carpetas = CarpetasUsuario();
 
@@ -135,13 +99,13 @@ namespace TpPW.Controllers
                 {
                     tarea.FechaCreacion = DateTime.Now;
 
-                    if(tarea.FechaFin == null)
+                    if (tarea.FechaFin == null)
                     {
                         tarea.FechaFin = DateTime.Now;
-                    }                                                                               
+                    }
 
                     var usuario = (int)Session["id"];
-                   
+
                     tarea.IdUsuario = usuario;
 
                     context.Tarea.Add(tarea);
@@ -159,19 +123,51 @@ namespace TpPW.Controllers
                     return View("NuevaTarea");
                 }
             }
+            else //Si no existe una cookies verifico session
+            {
+                if (Session["usuario"] != null)
+                {
+                    ViewBag.Carpetas = CarpetasUsuario();
+
+                    if (ModelState.IsValid)
+                    {
+                        tarea.FechaCreacion = DateTime.Now;
+
+                        if (tarea.FechaFin == null)
+                        {
+                            tarea.FechaFin = DateTime.Now;
+                        }
+
+                        var usuario = (int)Session["id"];
+
+                        tarea.IdUsuario = usuario;
+
+                        context.Tarea.Add(tarea);
+                        context.SaveChanges();
+
+                        if (tarea != null)
+                        {
+                            Session["Mensaje"] = "La tarea " + tarea.Nombre + " se ha creado exitosamente";
+                            return RedirectToAction("MisTareas");
+                        }
+                    }
+                    else
+                    {
+                        ViewBag.Mensaje = "La Tarea no pudo ser creada";
+                        return View("NuevaTarea");
+                    }
+                }
+            }
             return RedirectToAction("Login", "Home");
         }
 
-
-
-
-
+        
 
         public List<Tuple<int,string>> CarpetasUsuario()
         {
             if (Session["usuario"] != null)
             {
-                var usuario = (int)Session["id"];
+                var usuario = Convert.ToInt32( Session["id"]);
 
                 var c = (from p in context.Carpeta
                                              where p.IdUsuario == usuario
@@ -188,12 +184,8 @@ namespace TpPW.Controllers
             return null;
         }
 
-    
 
-
-
-
-
+        
         public ActionResult DescripcionTarea(int IdTar)
         {
             DetalleTarea model = new DetalleTarea();
@@ -212,12 +204,8 @@ namespace TpPW.Controllers
             return View(model);
 
         }
-
-     
-
-
-
-
+        
+        
 
         [HttpPost]
         public ActionResult CrearComentario(ComentarioTarea nuevocomentario)
