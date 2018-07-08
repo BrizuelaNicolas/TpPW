@@ -29,9 +29,7 @@
             <th>
 
             </th>
-            <th>
 
-            </th>
 
         </tr>
 
@@ -58,20 +56,53 @@
                         @Html.DisplayFor(modelItem => item.Nombre)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Prioridad)
+                        @switch (item.Prioridad)
+                        {
+                        case 1:
+                        <text>
+                            Baja
+                        </text>
+                        break;
+                        case 2:
+                        <text>
+                            Media
+                        </text>
+                        break;
+                        case 3:
+                        <text>
+                            Alta
+                        </text>
+                        break;
+                        case 4:
+                        <text>
+                            Urgente
+                        </text>
+                        break;
+                        default:
+                        <text>
+                            default
+                        </text>
+                        break;
+                        }
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.EstimadoHoras) Hs
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Completada)
+                        @if (item.Completada == 1)
+                        {
+                            <p>Completada</p>
+                        }
+                        else
+                        {
+                            <p>Incompleta</p>
+                        }
+                        @*@Html.DisplayFor(modelItem => item.Completada)*@
                     </td>
                     <td>
                         @Html.ActionLink("Descripcion", "DescripcionTarea", "Tarea", new { idTar = item.IdTarea }, null)
                     </td>
-                    <td>
-                        <input type="checkbox" id="TareaCompleta" name="TareaCom" /> Completa
-                    </td>
+
                 </tr>
 
             }

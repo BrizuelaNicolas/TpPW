@@ -43,8 +43,8 @@
                 Prioridad
             </th>
             @*<th class="text-center">
-                Carpeta
-            </th>*@
+            Carpeta
+        </th>*@
             <th class="text-center">
                 Estimado
             </th>
@@ -57,6 +57,7 @@
             <th>
 
             </th>
+
 
         </tr>
 
@@ -85,70 +86,70 @@
                     <td>
                         @*@Html.DisplayFor(modelItem => item.Prioridad)*@
                         @{
-        switch (item.Prioridad)
-        {
-            case 1:
+            switch (item.Prioridad)
+            {
+                case 1:
                     <text >
-                        Baja
+                    Baja
                     </text>
-            break;
-            case 2:
-                    <text>
-                        Media
-                    </text>
-            break;
-            case 3:
-                    <text>
-                        Alta
-                    </text>
-            break;
-            case 4:
-                    <text>
-                        Urgente
-                    </text>
-            break;
-            default:
-                    <text>
-                        -
-                    </text>
-            break;
-            }
+    break;
+case 2:
+                <text>
+                    Media
+                </text>
+break;
+case 3:
+                <text>
+                    Alta
+                </text>
+break;
+case 4:
+                <text>
+                    Urgente
+                </text>
+break;
+default:
+                <text>
+                    -
+                </text>
+break;
+}
                         }
 
                     </td>
-                     <td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.EstimadoHoras) Hs
                     </td>
-                     <td>
-                         @*@Html.DisplayFor(modelItem => item.Completada)*@
-                         @{
-        switch (item.Completada)
-        {
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.Completada)*@
+                        @{
+            switch (item.Completada)
+            {
                         case 0:
-                     <text >
-                     No
-                     </text>
-                        break;
+                            <text >
+                            No
+                            </text>
+                            break;
                         case 1:
-                     <text>
-                     Si
-                     </text>
-                        break;
-                        default:
-                     <text>
-                     -
-                     </text>
-                        break;
+                        <text>
+                            Si
+                        </text>
+                            break;
+                            default:
+                        <text>
+                            -
+                        </text>
+                            break;
+                            }
                         }
-                         }
-                     </td>
+                    </td>
                     <td>
                         @Html.ActionLink("Ver detalles", "DescripcionTarea", new { IdTar = item.IdTarea })
                     </td>
-                   
                     <td>
-                        <input type="checkbox" id="TareaCompleta" name="TareaCom" /> Completa
+                        @Html.ActionLink("Ir a carpeta", "TareasDeCarpeta","Carpeta", new { id = item.IdCarpeta }, null)
                     </td>
+
                 </tr>
 
             }
