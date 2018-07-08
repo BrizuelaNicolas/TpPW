@@ -9,57 +9,51 @@ namespace TpPW.Models
 {
     public class ArchivoModelView
     {
-        public static string Guardar(HttpPostedFileBase archivoSubido, string nombreSignificativo)
+        public static string Guardar(HttpPostedFileBase archivoSubido, string nombreSignificativo, string carpeta)
         {
-            //Aclaracion: si queremos agrandar el tamaño máximo de archivo permitido modificar web.config (por defecto es 4MB -> 4096)
-            //<httpRuntime maxRequestLength="4096" />
-
-            //ejemplo: /Media/Imagenes/
-            //la carpeta (con path relativo) donde se guardan las imagenes se obtiene del web.config
-            string carpetaArchivo = System.Configuration.ConfigurationManager.AppSettings["CarpetaArchivo"];
-
-            if (string.IsNullOrEmpty(carpetaArchivo))
-            {
-                throw new Exception("En el archivo web.config debe agregar dentro de <appSettings> el elemento <add key=\"CarpetaImagenes\" value=\"/Imagenes/\" />");
-            }
-
-            //garantizamos que no importa si el valor en el web.config empieza/termina con /, nosotros le ponemos que empiece y termine con /
-            carpetaArchivo = string.Format("/{0}/", carpetaArchivo.TrimStart('/').TrimEnd('/'));
-
             //Server.MapPath antepone a un string la ruta fisica donde actualmente esta corriendo la aplicacion (ej. c:\inetpub\misitio\)
-            string pathDestino = System.Web.Hosting.HostingEnvironment.MapPath("~") + carpetaArchivo;
+            string pathDestino = System.Web.Hosting.HostingEnvironment.MapPath("~") + carpeta;
 
             //si no exise la carpeta, la creamos
             if (!System.IO.Directory.Exists(pathDestino))
             {
                 System.IO.Directory.CreateDirectory(pathDestino);
             }
-
-            string nombreArchivoFinal = GenerarNombreUnico(nombreSignificativo);
+            string fileExtension = nombreSignificativo.Split('.').LastOrDefault();
+            string fileName = nombreSignificativo.Split('.').FirstOrDefault();
+            string nombreArchivoFinal = GenerarNombreUnico(fileName);
             nombreArchivoFinal = string.Concat(nombreArchivoFinal, Path.GetExtension(archivoSubido.FileName));
 
             //para guardar en el disco rigido, se guarda con el path absoluto
             archivoSubido.SaveAs(string.Concat(pathDestino, nombreArchivoFinal));
-
             //retornamos el path relativo desde la raiz del sitio
-            return string.Concat(carpetaArchivo, nombreArchivoFinal);
+            return string.Concat(carpeta, nombreArchivoFinal);
         }
 
         private static string GenerarNombreUnico(string nombreSignificativo)
         {
-            //Genero un string random de 20 caracteres para asegurar un nombre unico y que no se pisen archivos inesperadamente
-            //System.Web.Security.Membership.GeneratePassword(int length, int numberOfNonAlphanumericCharacters)
-            string randomString = System.Web.Security.Membership.GeneratePassword(20, 0);
-            Random rnd = new Random();
+            return $"{nombreSignificativo}_{Guid.NewGuid().ToString()}";
+        }
 
-            //removiendo espacios y caracteres raros del string random 
-            randomString = Regex.Replace(randomString, @"[^a-zA-Z0-9]", m => "");
+        /// <summary>
+        /// Borra la imagen guardada en el server basandose en el parametro (relativo o absoluto)
+        /// </summary>
+        /// <param name="pathGuardado"></param>
+        /// <returns></returns>
+        public static void Borrar(string pathGuardado)
+        {
+            //si el path es relativo, se le agrega el mapeo completo para que sea absoluto
+            //y pasar de /temp/imagen.jpg a c:\inetpub\temp\imagen.jpg por ejemplo
+            if (Path.GetPathRoot(pathGuardado).Contains(":"))
+            {
+                //Alternativa a Server.MapPath(
+                pathGuardado = System.Web.Hosting.HostingEnvironment.MapPath("~") + pathGuardado;
+            }
 
-            //removiendo espacios y caracteres raros del nombre 
-            nombreSignificativo = Regex.Replace(nombreSignificativo.Trim(), @"[^a-zA-Z0-9]", m => "").ToLower();
-
-            //{Nombre,8 carac}-{Random,5 carac}
-            return string.Format("{0}-{1}", StringUtility.Truncar(nombreSignificativo, 8), StringUtility.Truncar(randomString, 5));
+            if (System.IO.File.Exists(pathGuardado))
+            {
+                System.IO.File.Decrypt(pathGuardado);
+            }
         }
     }
 }

@@ -6,7 +6,9 @@
 }
 <h2 class="text-center">Descripcion Tarea</h2>
 <hr />
-<h4 class="text-center" style="color:red">@ViewBag.Messege</h4>
+<h4 class="text-center" style="color:red">@ViewBag.ArchivoOK</h4>
+<h4 class="text-center" style="color:red">@ViewBag.ArchivoNo</h4>
+
 <div class="row">
     <div class="col-lg-4 col-lg-offset-4">
         <div class="panel panel-info">
@@ -17,6 +19,8 @@
 
                 <label>Tarea: </label> @Model.Tarea.Nombre <br />
                 <label>Descripcion:</label> @Model.Tarea.Descripcion
+                <label>Fecha de Creacion:</label> @Model.Tarea.FechaCreacion
+                @Html.HiddenFor(m => m.Tarea.IdTarea)
             </div>
         </div>
     </div>
@@ -30,7 +34,7 @@
             </div>
             <div class="panel-body">
                 @foreach (var item in Model.ListaComentarioTarea)
-            {
+                {
                     <label>@item.FechaCreacion</label> <br />@item.Texto <br />
                 }
 
@@ -54,18 +58,26 @@
             <div class="panel-body">
                 @foreach (var item in Model.ListaArchivoTarea)
                 {
-                    <label>@item.FechaCreacion</label><br />@item.RutaArchivo<br />
-                }
+                    <a href="@item.RutaArchivo">@item.RutaArchivo<br /></a>
+                    <label>@item.FechaCreacion</label><br />
+                    @Html.HiddenFor(m => m.Tarea.IdTarea)
 
-                @using (Html.BeginForm("SubirArchivo", "Tarea"))
-                {
-                @Html.TextBoxFor(m => m.NuevoArchivo.NombreArchivo)
-                @Html.TextBoxFor(m => m.NuevoArchivo.RutaArchivo , new { type = "file" })
-                @Html.HiddenFor(m => m.NuevoArchivo.IdTarea)
-                    <br />
-                <input type="submit" value="Adjuntar" class="btn btn-primary" />
                 }
-            </div>
+                @Html.HiddenFor(m => m.Tarea.IdTarea)
+                @Html.HiddenFor(m => m.NuevoArchivo.IdTarea)
+
+                        @using (Html.BeginForm("SubirArchivo", "Tarea"))
+                        {
+                           
+                            @Html.TextBoxFor(m => m.NuevoArchivo.RutaArchivo, new { type = "file"@*, id = "adjunto"*@ })
+                           
+                            @Html.HiddenFor(m => m.Tarea.IdTarea)
+                            @Html.HiddenFor(m => m.NuevoArchivo.IdTarea)
+                            <br />
+                            <input type="submit" value="Adjuntar" class="btn btn-primary" />
+                        }
+                
+</div>
         </div>
     </div>
 </div>

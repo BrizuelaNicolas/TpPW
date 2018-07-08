@@ -20,31 +20,46 @@ namespace TpPW.Controllers
     public class CarpetaController : Controller
     {
         public TareasEntities context = new TareasEntities();
-       
+
 
         //Listamos Las carpetas
         public ActionResult MisCarpetas()
         {
-            if (Session["usuario"] != null)
+            //SI existe la cookies que se cargue
+            if (Request.Cookies["CookieUsuario"] != null)
             {
-                var usuario = (int)Session["id"];
+                var usuario = Convert.ToUInt32(Session["id"]);
 
                 var carpeta = (from p in context.Carpeta
                                where p.IdUsuario == usuario
-                               orderby p.FechaCreacion
+                               orderby p.Nombre ascending
                                select p).ToList();
 
                 return View(carpeta);
             }
-            else
+            else // si no existe cookies, que verifique session
             {
-                ViewBag.MensajeError = "Usuario o contraseña invalido";
-                return RedirectToAction("../Home/Login");
+
+                if (Session["usuario"] != null)
+                {
+                    var usuario = Convert.ToUInt32(Session["id"]);
+
+                    var carpeta = (from p in context.Carpeta
+                                   where p.IdUsuario == usuario
+                                   orderby p.Nombre ascending
+                                   select p).ToList();
+
+                    return View(carpeta);
+                }
+                else
+                {
+                    ViewBag.MensajeError = "Usuario o contraseña invalido";
+                    return RedirectToAction("../Home/Login");
+                }
+
+
             }
-
-            
         }
-
 
 
 

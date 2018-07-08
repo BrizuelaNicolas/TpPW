@@ -107,11 +107,8 @@ namespace TpPW.Controllers
             }
             else
             {
-                ViewBag.Captcha = "El captcha es inválido";
-                               
-            }
-
-            
+                ViewBag.Captcha = "El captcha es inválido";                               
+            }            
             return View(usuario);
         }
 
