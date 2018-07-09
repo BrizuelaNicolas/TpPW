@@ -39,6 +39,12 @@ namespace TpPW.Controllers
             }
             else // si no existe cookies, que verifique session
             {
+                if (Session["id"] == null)//Si el usuario no esta logueado
+                {
+                    ViewBag.userNameInSession = "El usuario no esta en la session";
+                    Session["returnPath"] = Request.RawUrl;
+                    return RedirectToAction("Login", "Home");
+                }
 
                 if (Session["usuario"] != null)
                 {
@@ -76,6 +82,12 @@ namespace TpPW.Controllers
 
             if (ModelState.IsValid)
             {
+                if (Session["id"] == null)//Si el usuario no esta logueado
+                {
+                    ViewBag.userNameInSession = "El usuario no esta en la session";
+                    Session["returnPath"] = Request.RawUrl;
+                    return RedirectToAction("Login", "Home");
+                }
                 if (Session["usuario"] != null)
                 {
                     

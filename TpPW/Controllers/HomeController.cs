@@ -129,6 +129,15 @@ namespace TpPW.Controllers
                         Session["nombre"] = myUsuario.Nombre;
                         Session["id"] = myUsuario.IdUsuario;
                         Session["contra"] = myUsuario.Contrasenia;
+                        if (Session["ReturnPath"] == null)
+                            return RedirectToAction("Index", "Home"); /*redirije al Home*/
+                        else
+                        {
+                            string path = Session["ReturnPath"] as string;
+                            Session.Remove("ReturnPath");
+                            Response.Redirect(path);
+                            //return RedirectToAction(path);
+                        }
 
                         var usuario = Convert.ToInt32(Session["id"]);
 

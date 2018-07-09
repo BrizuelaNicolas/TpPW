@@ -48,6 +48,13 @@ namespace TpPW.Controllers
             }
             else // si no existe cookies, que verifique session
             {
+                if (Session["id"] == null)//Si el usuario no esta logueado
+                {
+                    ViewBag.userNameInSession = "El usuario no esta en la session";
+                    Session["returnPath"] = Request.RawUrl;
+                    return RedirectToAction("Login", "Home");
+                }
+
                 if (Session["usuario"] != null)
                 {
                     var usuario = Convert.ToInt32(Session["id"]);
@@ -96,6 +103,7 @@ namespace TpPW.Controllers
             //SI existe la cookies que se cargue
             if (Request.Cookies["CookieUsuario"] != null)
             {
+
                 if (Session["usuario"] != null)
                 {
                     ViewBag.Carpetas = CarpetasUsuario();
@@ -104,6 +112,12 @@ namespace TpPW.Controllers
             }
             else //Si no existe una cookies verifico session
             {
+                if (Session["id"] == null)//Si el usuario no esta logueado
+                {
+                    ViewBag.userNameInSession = "El usuario no esta en la session";
+                    Session["returnPath"] = Request.RawUrl;
+                    return RedirectToAction("Login", "Home");
+                }
                 if (Session["usuario"] != null)
                 {
                     ViewBag.Carpetas = CarpetasUsuario();
@@ -153,6 +167,12 @@ namespace TpPW.Controllers
             }
             else //Si no existe una cookies verifico session
             {
+                if (Session["id"] == null)//Si el usuario no esta logueado
+                {
+                    ViewBag.userNameInSession = "El usuario no esta en la session";
+                    Session["returnPath"] = Request.RawUrl;
+                    return RedirectToAction("Login", "Home");
+                }
                 if (Session["usuario"] != null)
                 {
                     ViewBag.Carpetas = CarpetasUsuario();
@@ -193,6 +213,7 @@ namespace TpPW.Controllers
 
         public List<Tuple<int,string>> CarpetasUsuario()
         {
+
             if (Session["usuario"] != null)
             {
                 var usuario = Convert.ToInt32( Session["id"]);
@@ -238,6 +259,12 @@ namespace TpPW.Controllers
         [HttpPost]
         public ActionResult CrearComentario(ComentarioTarea nuevocomentario)
         {
+            if (Session["id"] == null)//Si el usuario no esta logueado
+            {
+                ViewBag.userNameInSession = "El usuario no esta en la session";
+                Session["returnPath"] = Request.RawUrl;
+                return RedirectToAction("Login", "Home");
+            }
             if (Session["usuario"] != null)
           {
                 if (ModelState.IsValid)
@@ -271,6 +298,12 @@ namespace TpPW.Controllers
         [HttpPost]
         public ActionResult SubirArchivo(ArchivoTarea nuevoArchivo, HttpPostedFileBase adjunto) //, HttpPostedFileBase adjunto
         {
+            if (Session["id"] == null)//Si el usuario no esta logueado
+            {
+                ViewBag.userNameInSession = "El usuario no esta en la session";
+                Session["returnPath"] = Request.RawUrl;
+                return RedirectToAction("Login", "Home");
+            }
             if (Session["usuario"] != null)
             {
                 if (ModelState.IsValid)
