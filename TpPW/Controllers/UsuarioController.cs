@@ -33,10 +33,18 @@ namespace TpPW.Controllers
 
         //Guardo en la base
         [HttpPost]
-        public ActionResult NuevoUsuario(Usuario usuario)
+        public ActionResult NuevoUsuario(Usuario usuario, string email)
         {
             string EncodedResponse = Request.Form["g-Recaptcha-Response"];
             bool recaptcha = (Captcha.Validate(Request.Form["g-Recaptcha-Response"]));
+
+            var myUsuario = context.Usuario
+                                .Where(b => b.Email == email)                                
+                                .FirstOrDefault();
+
+            usuario.Activo += myUsuario.Activo;
+
+            string inactivo = "0";
 
             if (recaptcha)
             {
@@ -46,7 +54,7 @@ namespace TpPW.Controllers
                 string EmailUsu = usuario.Email;
                 string Contra = usuario.Contrasenia;
                 string ActivoUsu = Convert.ToString(usuario.Activo);
-                usuario.Activo = Convert.ToInt16(ActivoUsu);
+              //  usuario.Activo = Convert.ToInt16(ActivoUsu);
                 usuario.FechaRegistracion = DateTime.Now;
                 usuario.FechaActivacion = DateTime.Now;
                 usuario.CodigoActivacion = "4AE52B1C-C3E2-4AB1-8EFD-859FCB87F5B4";
@@ -57,7 +65,7 @@ namespace TpPW.Controllers
                 {
                     if (VerificoEmail(EmailUsu) == false)
                     {
-                        usuario.Activo = 1;
+                        //usuario.Activo = 1;
                         
                         context.Usuario.Add(usuario);
                         context.SaveChanges();
@@ -85,8 +93,9 @@ namespace TpPW.Controllers
                     {
                         if (VerificoEmail(EmailUsu) == true)
                         {
+
                             //Verifico si el usuario esta activo o no
-                            if (VerificoActividad(ActivoUsu) == true)
+                            if (ActivoUsu == inactivo)
                             {
                                 EmailExisteInactivo(usuario);
                                 return RedirectToAction("../Home/Home");                                
@@ -125,6 +134,7 @@ namespace TpPW.Controllers
         // ver esta validacion
         public bool VerificoActividad(string activo)
         {
+
             return context.Usuario.Any(x => x.Activo == 1);
         }
 

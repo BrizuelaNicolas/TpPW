@@ -12,7 +12,7 @@
     <div class="panel panel-primary col-lg-4 col-lg-offset-4">
 
         <h3>Nuevo usuario</h3>
-        @*<h4 class="text-center" style="color:red">@ViewBag.Messege</h4>*@
+        <h4 class="text-center" style="color:red">@ViewBag.EmailEsxiste</h4>
         <hr />
         <div class="panel-body form-horizontal">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -45,6 +45,7 @@
                 @Html.PasswordFor(model => model.ContraseniaConfirmacion, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ContraseniaConfirmacion, "", new { @class = "text-danger" })
             </div>
+            @Html.HiddenFor(m => m.Activo)
             <div class="form-group">
                 <span class="label label-danger">@ViewBag.Captcha</span>
                 <div class="g-recaptcha" data-sitekey="6Leyol8UAAAAANvqXmrFbYmEoadlPWERYXem1W-v"></div>

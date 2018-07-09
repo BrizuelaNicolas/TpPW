@@ -36,7 +36,7 @@ namespace TpPW.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "Home");
+                return View();
             }   
         }
 
@@ -130,7 +130,7 @@ namespace TpPW.Controllers
                         Session["id"] = myUsuario.IdUsuario;
                         Session["contra"] = myUsuario.Contrasenia;
                         if (Session["ReturnPath"] == null)
-                            return RedirectToAction("Index", "Home"); /*redirije al Home*/
+                            return RedirectToAction("Home", "Home");
                         else
                         {
                             string path = Session["ReturnPath"] as string;

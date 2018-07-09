@@ -14,23 +14,21 @@
 {
     <div class="col-lg-4 col-lg-offset-4">
         <div class="panel panel-primary">
-            <div class="panel-heading">
-                Nueva carpeta
-            </div>
+
             <h2 class="text-center" style="color:red">@ViewBag.Messege</h2>
             <div class="panel-body">
                 <div class="form-horizontal">
                     <div class="form-group">
-                        <label for="NombreCarpeta" class="col-sm-4 control-label">Nombre:</label>
-                        <div class="col-sm-8">
+                        <label for="NombreCarpeta" class="col-sm-3 control-label">Nombre:</label>
+                        <div class="col-sm-9">
                             @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control", title = "Debe ingresar un nombre válido" })
                             <!-- <input type="text" class="form-control" id="NombreTarea" />-->
                             <label class="text-danger">@Html.ValidationMessageFor(x => x.Nombre)</label>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="DescripcionCarpeta" class="col-sm-4 control-label">Descripcion:</label>
-                        <div class="col-sm-8">
+                        <label for="DescripcionCarpeta" class="col-sm-3 control-label">Descripcion:</label>
+                        <div class="col-sm-9">
                             @Html.TextAreaFor(m => m.Descripcion, new { @class = "form-control"})
                             @*<textarea rows="3" class="form-control"></textarea>*@
                         </div>
